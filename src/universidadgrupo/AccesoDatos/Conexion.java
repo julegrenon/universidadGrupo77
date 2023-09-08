@@ -44,6 +44,3 @@ public class Conexion {
 
 
 
-/* MAIN
-Connection con= Conexion.getConexion();
-*/
