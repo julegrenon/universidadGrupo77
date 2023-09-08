@@ -13,10 +13,10 @@ import javax.swing.JOptionPane;
 
 public class Conexion {
     
-    private static final String URL="JDBC:mariadb://localhost/";
-    private static final String DB="universidadGrupo77";
+    private static final String URL="jdbc:mariadb://localhost/";
+    private static final String DB="universidadejemplo";
     private static final String USUARIO="root";
-    private static final String PASSWORD=" ";
+    private static final String PASSWORD="";
     private static Connection conex;
     
     private Conexion(){   
@@ -26,7 +26,7 @@ public class Conexion {
       if(conex==null){
           try {
               Class.forName("org.mariadb.jdbc.Driver");
-              conex=DriverManager.getConnection(URL+DB, USUARIO, PASSWORD);
+              conex=DriverManager.getConnection(URL+DB,USUARIO,PASSWORD);
               JOptionPane.showMessageDialog(null, "Conectado");
         
           } catch (ClassNotFoundException ex) {
