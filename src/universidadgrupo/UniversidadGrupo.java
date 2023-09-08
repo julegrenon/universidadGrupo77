@@ -9,7 +9,9 @@ import java.sql.Connection;
 import java.time.LocalDate;
 import universidadgrupo.AccesoDatos.AlumnoData;
 import universidadgrupo.AccesoDatos.Conexion;
+import universidadgrupo.AccesoDatos.MateriaData;
 import universidadgrupo.entidades.Alumno;
+import universidadgrupo.entidades.Materia;
 
 
 public class UniversidadGrupo {
@@ -23,6 +25,12 @@ public class UniversidadGrupo {
         //alu.guardarAlumno(alumno);
         //alu.modificarAlumno(alumno);
         alu.eliminarAlumno(14);*/
+        
+        /*
+        Materia materia= new Materia("Geografia", 3, true);
+        MateriaData mat= new MateriaData();
+        mat.guardarMateria(materia);
+*/
     }
     
 }
