@@ -66,7 +66,7 @@ public class UniversidadGrupo {
         }*/
             
         //PRUEBA BUSCAR MATERIA
-        
+        /*
         MateriaData mat= new MateriaData();
         Materia materiaEncontrada=mat.buscarMateria(3);
         if(materiaEncontrada!=null){
@@ -74,9 +74,7 @@ public class UniversidadGrupo {
         System.out.println("Año: "+materiaEncontrada.getAnio());
         
           }
-
-        }
-        
+*/
         
             
             //PRUEBA INSCRIPCION
@@ -85,5 +83,5 @@ public class UniversidadGrupo {
             //inscData.guardarInscripcion(incs);*/
         }
     
-    
+}
 
