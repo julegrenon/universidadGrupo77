@@ -6,7 +6,13 @@
 package universidadgrupo.AccesoDatos;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
+import java.sql.SQLException;
+import java.sql.Statement;
 import java.util.List;
+import javax.swing.JOptionPane;
 import universidadgrupo.entidades.Alumno;
 import universidadgrupo.entidades.Inscripcion;
 import universidadgrupo.entidades.Materia;
@@ -26,10 +32,36 @@ public class InscripcionData {
     
     //Inscribe a materia
     public void guardarInscripcion(Inscripcion insc){
+            // ?=variable comodin
+        String sql="INSERT INTO inscripcion (idAlumno, idMateria, nota)"
+                + "VALUES (?, ?, ?)";
         
+        try {
+            PreparedStatement ps=con.prepareStatement(sql, Statement.RETURN_GENERATED_KEYS);
+            
+            // Setea los comodines
+            ps.setInt(1, insc.getAlumno().getIdAlumno());
+            ps.setInt(2, insc.getMateria().getIdMateria());
+            ps.setDouble(3, insc.getNota());
+            
+            
+            ps.executeUpdate();
+            
+            //Setea id
+            ResultSet rs=ps.getGeneratedKeys();
+            if (rs.next()){
+                
+                insc.setIdInscripto(rs.getInt(1));
+                JOptionPane.showMessageDialog(null, "Alumno inscripto");
+            }
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumnos");
+        }
     }
     
-    //Lista todos los inscriptos
+   /* //Lista todos los inscriptos
     public List<Inscripcion> obtenerInscripciones(){
         
     }
@@ -62,5 +94,5 @@ public class InscripcionData {
     //Lista alumnos x materia
     public List<Alumno> obtenerAlumnosPorMateria (int idMateria){
         
-    }
+    }*/
 }
