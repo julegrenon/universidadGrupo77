@@ -60,7 +60,7 @@ public class MateriaData {
                 materia.setEstado(true);
                 
             }else {
-            JOptionPane.showMessageDialog(null, "No existe esa materia");
+            JOptionPane.showMessageDialog(null, "No existe esa materia con ese ID");
             }
             ps.close();
         } catch (SQLException ex) {
@@ -68,4 +68,6 @@ public class MateriaData {
         }
    return materia;
     }
+    
+    
 }
