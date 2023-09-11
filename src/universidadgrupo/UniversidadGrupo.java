@@ -61,15 +61,28 @@ public class UniversidadGrupo {
             System.out.println("apellido: "+alumno.getApellido());
             System.out.println("fecha nacimiento: "+alumno.getFechaNacimiento());
             System.out.println("==============================");
+
+=======
+        }*/
+            
+        //PRUEBA BUSCAR MATERIA
+        /*
+        MateriaData mat= new MateriaData();
+        Materia materiaEncontrada=mat.buscarMateria(5);
+        System.out.println("Nombre: "+materiaEncontrada.getNombre());
+        System.out.println("Año: "+materiaEncontrada.getAnio());
+        */
+        
+
         }
         
         
             
             //PRUEBA INSCRIPCION
-            Inscripcion incs=new Inscripcion(alumno,materia, 0.0);
-            InscripcionData inscData=new InscripcionData();
-            inscData.guardarInscripcion(incs);*/
+           // Inscripcion incs=new Inscripcion(alumno,materia, 0.0);
+            //InscripcionData inscData=new InscripcionData();
+            //inscData.guardarInscripcion(incs);*/
         }
-    }
+    
     
 
