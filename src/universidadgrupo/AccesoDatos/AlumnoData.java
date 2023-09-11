@@ -6,6 +6,8 @@
 package universidadgrupo.AccesoDatos;
 
 import java.sql.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -150,5 +152,32 @@ public class AlumnoData {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumnos");
         }
         return alumno;
+    }
+     
+     public List<Alumno> listarAlumnos (){
+        String sql="SELECT idAlumno, dni, apellido, nombre, fechaNacimiento FROM alumno WHERE estado=1";
+        ArrayList<Alumno> alumnosLista=new ArrayList();
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            
+            ResultSet rs=ps.executeQuery();
+            
+            while (rs.next()){
+                Alumno alumno=new Alumno();
+                alumno.setIdAlumno(rs.getInt("idAlumno"));
+                alumno.setDni(rs.getInt("dni"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setNombre("nombre");
+                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                alumno.setEstado(true);
+                
+                alumnosLista.add(alumno);
+            } 
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumnos");
+        }
+        return alumnosLista;
     }
 }

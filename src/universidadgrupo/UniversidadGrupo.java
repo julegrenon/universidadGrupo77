@@ -51,7 +51,17 @@ public class UniversidadGrupo {
         System.out.println("apellido: "+alumnoEncontrado.getApellido());
        }*/
         
-
+     //PRUEBA LISTAR TODOS LOS ALUMNOS
+        /*for (Alumno alumno : alu.listarAlumnos()) {
+            System.out.println("id: "+alumno.getIdAlumno());
+            System.out.println("dni: "+alumno.getDni());
+            System.out.println("nombre: "+alumno.getNombre());
+            System.out.println("apellido: "+alumno.getApellido());
+            System.out.println("fecha nacimiento: "+alumno.getFechaNacimiento());
+            System.out.println("==============================");
+        }*/
+            
+        }
     }
     
-}
+
