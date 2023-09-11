@@ -72,8 +72,9 @@ public class UniversidadGrupo {
             
         //PRUEBA BUSCAR MATERIA
         
-        
-        
+        MateriaData mat= new MateriaData();
+        Materia materiaEncontrada=mat.buscarMateria(6);
+        System.out.println("");
         }
 
     }
