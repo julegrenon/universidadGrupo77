@@ -32,18 +32,20 @@ public class UniversidadGrupo {
         MateriaData mat= new MateriaData();
         mat.guardarMateria(materia);
 */
-=======
+
         //alu.eliminarAlumno(14);
         
         
         //PRUEBA BUSCAR ALUMNO POR ID
-       Alumno alumnoEncontrado=alu.buscarAlumno(15);
+     /*   AlumnoData alu = new AlumnoData();
+       Alumno alumnoEncontrado=alu.buscarAlumno(1);
        if (alumnoEncontrado!=null){
         System.out.println("dni: "+alumnoEncontrado.getDni());
         System.out.println("apellido: "+alumnoEncontrado.getApellido());
-       }*/
-        
->>>>>>> 436cb6bace8cb7978a93dbe717c968a435530df4
+       }
+        */
+
+     
     }
     
 }
