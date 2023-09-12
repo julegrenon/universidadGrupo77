@@ -11,6 +11,7 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.List;
 import javax.swing.JOptionPane;
 import universidadgrupo.entidades.Alumno;
@@ -61,13 +62,40 @@ public class InscripcionData {
         }
     }
     
-   /* //Lista todos los inscriptos
+    //Lista todos los inscriptos
     public List<Inscripcion> obtenerInscripciones(){
         
+        ArrayList<Inscripcion> inscripcionLista=new ArrayList();
+        
+         String sql="SELECT idInscripto, nota, inscripcion.idAlumno, inscripcion.idMateria FROM inscripcion, alumno, materia";
+         
+        
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            
+            
+            ResultSet rs=ps.executeQuery();
+            
+            while (rs.next()){
+                Inscripcion inscripcion=new Inscripcion();
+                
+                
+                inscripcion.setIdInscripto(rs.getInt("idinscripto"));
+                inscripcion.getAlumno().setIdAlumno(rs.getInt("idAlumno"));
+                inscripcion.getMateria().setIdMateria(rs.getInt("idMateria"));
+                inscripcion.setNota(rs.getDouble("nota"));
+                
+                inscripcionLista.add(inscripcion);
+            } 
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumnos");
+        }
+        return inscripcionLista;
     }
     
     //Inscripciones x alumno
-    public List<Inscripcion> obtenerInscripcionesPorAlumno(int id){
+   /* public List<Inscripcion> obtenerInscripcionesPorAlumno(int id){
         
     }
     
