@@ -6,6 +6,8 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
 import java.sql.Statement;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.logging.Level;
 import java.util.logging.Logger;
 import javax.swing.JOptionPane;
@@ -100,5 +102,18 @@ public class MateriaData {
            JOptionPane.showMessageDialog(null, "Error al eliminar la materia");
         }
         
+    }
+    
+    public List< Materia> listarMateria(){
+    
+       String sql="SELECT `idMateria`, `nombre`, `anio` FROM `materia` WHERE estado=1";
+       
+       ArrayList<Materia> materias=new ArrayList <>();
+       
+       PreparedStatement ps=con.prepareStatement(sql);
+       ps.setInt(1, );
+       
+       
+       
     }
 }
