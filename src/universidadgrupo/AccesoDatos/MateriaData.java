@@ -109,11 +109,24 @@ public class MateriaData {
        String sql="SELECT `idMateria`, `nombre`, `anio` FROM `materia` WHERE estado=1";
        
        ArrayList<Materia> materias=new ArrayList <>();
-       
-       PreparedStatement ps=con.prepareStatement(sql);
-       ps.setInt(1, );
-       
-       
-       
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            
+            while(rs.next()){            
+                Materia materia=new Materia();
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getNString("nombre"));
+                materia.setAnio(rs.getInt("anio"));
+                materia.setEstado(true);
+                
+                materias.add(materia);
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla  materias");
+        }       
+       return materias;
     }
+
 }
