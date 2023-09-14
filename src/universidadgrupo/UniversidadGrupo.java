@@ -21,9 +21,6 @@ public class UniversidadGrupo {
    
     public static void main(String[] args) {
         
-  AlumnoData ad=new AlumnoData();
-     
-
     }
 }
 
