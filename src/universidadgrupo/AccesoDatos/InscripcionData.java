@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+METODOS OBTENER INSCRIPCIONES AUN NO FUNCIONAN.
+ARROJAN NULL POINTER EXCEPTION
  */
 package universidadgrupo.AccesoDatos;
 
@@ -136,7 +135,7 @@ public class InscripcionData {
         ArrayList<Materia> materiasCursadas=new ArrayList();
         
         String sql="SELECT inscripcion.idMateria, nombre, anio FROM inscripcion,"
-                + " materia WHERE inscipcion.idMateria=materia.idMateria "
+                + " materia WHERE inscripcion.idMateria=materia.idMateria "
                 + "AND inscripcion.idAlumno = ?";
         
         try {
