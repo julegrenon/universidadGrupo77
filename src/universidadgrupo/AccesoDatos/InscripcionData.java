@@ -26,11 +26,12 @@ import universidadgrupo.entidades.Materia;
  */
 public class InscripcionData {
     private Connection con=null;
-    private MateriaData matData;
-    private AlumnoData aluData;
+    public MateriaData matData;
+    public AlumnoData aluData;
 
     public InscripcionData() {
         con=Conexion.getConexion();
+        
     }
     
     //Inscribe a materia
@@ -65,48 +66,130 @@ public class InscripcionData {
     }
     
     //Lista todos los inscriptos
-    public List<Inscripcion> obtenerInscripciones(){
+    public List<Inscripcion> obtenerInscripciones() {
         
-        ArrayList<Inscripcion> inscripcionLista=new ArrayList();
+        ArrayList<Inscripcion> inscripcionLista = new ArrayList<>();
         
-         String sql="SELECT idInscripto, nota, inscripcion.idAlumno, inscripcion.idMateria FROM inscripcion, alumno, materia";
-         
+        String sql = "SELECT * FROM inscripcion";
         
         try {
-            PreparedStatement ps=con.prepareStatement(sql);
+            PreparedStatement ps = con.prepareStatement(sql);
             
+            ResultSet rs = ps.executeQuery();
             
-            ResultSet rs=ps.executeQuery();
-            
-            while (rs.next()){
-                Inscripcion inscripcion=new Inscripcion();
+            while (rs.next()) {
+                Inscripcion inscripcion = new Inscripcion();
                 
-                
-                inscripcion.setIdInscripto(rs.getInt("idinscripto"));
-                inscripcion.getAlumno().setIdAlumno(rs.getInt("idAlumno"));
-                inscripcion.getMateria().setIdMateria(rs.getInt("idMateria"));
+                inscripcion.setIdInscripto(rs.getInt("idInscripto"));
                 inscripcion.setNota(rs.getDouble("nota"));
+                Alumno alum=aluData.buscarAlumno(rs.getInt("idAlumno"));
+                //System.out.println(alum);
+               // System.out.println("id alumno: "+rs.getInt("idAlumno"));
+                Materia mat = matData.buscarMateria(rs.getInt("idMateria"));
+                inscripcion.setAlumno(alum);
+                inscripcion.setMateria(mat);
+                
                 
                 inscripcionLista.add(inscripcion);
-            } 
+            }            
             ps.close();
-        } catch (SQLException ex) {
-            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla alumnos");
+        } catch (SQLException ex ) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripciones");
+        } catch (NullPointerException ex2){
+            JOptionPane.showMessageDialog(null,ex2);
         }
         return inscripcionLista;
     }
     
     //Inscripciones x alumno
-   /* public List<Inscripcion> obtenerInscripcionesPorAlumno(int id){
+    public List<Inscripcion> obtenerInscripcionesPorAlumno(int idAlumno){
+        ArrayList<Inscripcion> inscripcionLista = new ArrayList<>();
         
+        String sql = "SELECT * FROM inscripcion WHERE idAlumno = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            ResultSet rs = ps.executeQuery();
+            
+            while (rs.next()) {
+                Inscripcion inscripcion = new Inscripcion();
+                
+                inscripcion.setIdInscripto(rs.getInt("idInscripto"));
+                Alumno alum=aluData.buscarAlumno(rs.getInt("idAlumno"));
+                Materia mat = matData.buscarMateria(rs.getInt("idMateria"));
+                inscripcion.setAlumno(alum);
+                inscripcion.setMateria(mat);
+                inscripcion.setNota(rs.getDouble("nota"));
+                
+                inscripcionLista.add(inscripcion);
+            }            
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripciones");
+        }
+        return inscripcionLista;
     }
     
-    //Listar materias cursadas
-    public List<Materia> obtenerMateriasCursadas(int id){
+  //Listar materias cursadas
+    public List<Materia> obtenerMateriasCursadas(int idAlumno){
+        ArrayList<Materia> materiasCursadas=new ArrayList();
         
+        String sql="SELECT inscripcion.idMateria, nombre, anio FROM inscripcion,"
+                + " materia WHERE inscipcion.idMateria=materia.idMateria "
+                + "AND inscripcion.idAlumno = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            
+            ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                Materia materia = new Materia();
+                
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnio(rs.getInt("anio"));
+                
+                
+                
+                materiasCursadas.add(materia);
+            }            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripciones");
+        }
+        
+        return materiasCursadas;
     }
     
-    //Listar materias no cursadas
+      //Actualiza nota final en materia
+    public void actualizarNota (int idAlumno, int idMateria, double nota){
+        
+    String sql="UPDATE `inscripcion` "
+            + "SET `nota`=? "
+            + "WHERE idAlumno=? AND idMateria=?";
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            
+            ps.setDouble(1, nota);
+            ps.setInt(2, idAlumno);
+            ps.setInt(3, idMateria);
+            int filas =ps.executeUpdate();
+            
+            if(filas>0){
+             
+                JOptionPane.showMessageDialog(null,"Nota actualizada");
+            }
+             ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error alacceder a la tabla inscripcion");
+        }
+   
+    }
+    
+    /*//Listar materias no cursadas
     public List<Materia> obtenerMateriasNOCursadas(int id){
         
     }
@@ -116,9 +199,12 @@ public class InscripcionData {
         
     }
     
+<<<<<<< HEAD
     //Actualiza nota final en materia*/
 
     /*
+=======
+>>>>>>> b1bd1ee7bac54925c0ef7e65354aa6e030822365
     //Lista alumnos x materia
     public List<Alumno> obtenerAlumnosPorMateria (int idMateria){
         
