@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import universidadgrupo.entidades.Alumno;
 import universidadgrupo.entidades.Inscripcion;
@@ -114,11 +116,9 @@ public class InscripcionData {
         
     }
     
-    //Actualiza nota final en materia
-    public void actualizarNota (int idAlumno, int idMateria, double nota){
-        
-    }
-    
+    //Actualiza nota final en materia*/
+
+    /*
     //Lista alumnos x materia
     public List<Alumno> obtenerAlumnosPorMateria (int idMateria){
         
