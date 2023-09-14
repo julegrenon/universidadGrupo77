@@ -188,22 +188,43 @@ public class InscripcionData {
    
     }
     
-    /*//Listar materias no cursadas
-    public List<Materia> obtenerMateriasNOCursadas(int id){
+    //Listar materias no cursadas
+    public List<Materia> obtenerMateriasNOCursadas(int idAlumno){
+         ArrayList<Materia> materiasNOCursadas=new ArrayList();
         
+        String sql="SELECT * FROM materia WHERE estado = 1 AND idMateria not in "
+                + "(SELECT idMateria FROM inscripcion WHERE idAlumno = ?)";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            
+            ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                Materia materia = new Materia();
+                
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnio(rs.getInt("anio"));
+                
+                
+                
+                materiasNOCursadas.add(materia);
+            }            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripciones");
+        }
+        
+        return materiasNOCursadas;
     }
     
-    //Borra inscripción a materia
+    /*//Borra inscripción a materia
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
         
     }
     
-<<<<<<< HEAD
-    //Actualiza nota final en materia*/
-
-    /*
-=======
->>>>>>> b1bd1ee7bac54925c0ef7e65354aa6e030822365
     //Lista alumnos x materia
     public List<Alumno> obtenerAlumnosPorMateria (int idMateria){
         
