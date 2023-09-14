@@ -1,6 +1,7 @@
 /*
 METODOS OBTENER INSCRIPCIONES AUN NO FUNCIONAN.
 ARROJAN NULL POINTER EXCEPTION
+ A REVISAR
  */
 package universidadgrupo.AccesoDatos;
 
@@ -33,7 +34,7 @@ public class InscripcionData {
         
     }
     
-    //Inscribe a materia
+   //Inscribe a materia
     public void guardarInscripcion(Inscripcion insc){
             // ?=variable comodin
         String sql="INSERT INTO inscripcion (idAlumno, idMateria, nota)"
@@ -188,16 +189,46 @@ public class InscripcionData {
    
     }
     
-    /*//Listar materias no cursadas
-    public List<Materia> obtenerMateriasNOCursadas(int id){
+    //Listar materias no cursadas
+    public List<Materia> obtenerMateriasNOCursadas(int idAlumno){
+         ArrayList<Materia> materiasNOCursadas=new ArrayList();
         
+        String sql="SELECT * FROM materia WHERE estado = 1 AND idMateria not in "
+                + "(SELECT idMateria FROM inscripcion WHERE idAlumno = ?)";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            
+            ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                Materia materia = new Materia();
+                
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnio(rs.getInt("anio"));
+                
+                
+                
+                materiasNOCursadas.add(materia);
+            }            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripciones");
+        }
+        
+        return materiasNOCursadas;
     }
-    */
+    
     //Borra inscripción a materia
+<<<<<<< HEAD
 <<<<<<< Updated upstream
   
 =======
           
+=======
+>>>>>>> 10909d113cf934ba7b6aa7563f12c88a34bb0214
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
         
         String sql= "DELETE FROM inscripcion WHERE idAlumno=? AND idMateria=?";
@@ -218,6 +249,7 @@ public class InscripcionData {
         }
     }
     
+<<<<<<< HEAD
     
 >>>>>>> Stashed changes
 
@@ -226,8 +258,39 @@ public class InscripcionData {
     /*
 =======
 >>>>>>> b1bd1ee7bac54925c0ef7e65354aa6e030822365
+=======
+>>>>>>> 10909d113cf934ba7b6aa7563f12c88a34bb0214
     //Lista alumnos x materia
     public List<Alumno> obtenerAlumnosPorMateria (int idMateria){
+         ArrayList<Alumno> alumnosMateria=new ArrayList();
         
-    }*/
+        String sql="SELECT a.idAlumno, dni, nombre, apellido, fechaNacimiento, estado "
+                + "FROM inscripcion i, alumno a WHERE i.idAlumno = a.idAlumno AND idMateria = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idMateria);
+            
+            ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                Alumno alumno = new Alumno();
+                
+                alumno.setIdAlumno(rs.getInt("idAlumno"));
+                alumno.setDni(rs.getInt("dni"));
+                alumno.setApellido(rs.getString("apellido"));
+                alumno.setNombre(rs.getString("nombre"));
+                alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
+                alumno.setEstado(rs.getBoolean("estado"));
+                
+                
+                alumnosMateria.add(alumno);
+            }            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripciones");
+        }
+        
+        return alumnosMateria;
+    }
 }
