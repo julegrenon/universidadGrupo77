@@ -30,12 +30,16 @@ public class UniversidadGrupo {
         Materia mate=md.buscarMateria(9);
         Inscripcion inscrip=new Inscripcion(alu, mate, 0.0);
         
-        for (Inscripcion inscripcion : insc.obtenerInscripciones()) {
+       /* for (Inscripcion inscripcion : insc.obtenerInscripcionesPorAlumno(21)) {
             System.out.println("id inscripto: "+inscripcion.getIdInscripto());
             System.out.println("nombre: "+inscripcion.getAlumno().getNombre());
             System.out.println("apellido: "+inscripcion.getAlumno().getApellido());
             System.out.println("dni: "+inscripcion.getAlumno().getDni());
             System.out.println("materia: "+inscripcion.getMateria().getNombre());
+        }*/
+       
+        for (String arg : args) {
+            
         }
 
     }

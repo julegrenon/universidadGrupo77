@@ -13,6 +13,8 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.logging.Level;
+import java.util.logging.Logger;
 import javax.swing.JOptionPane;
 import universidadgrupo.entidades.Alumno;
 import universidadgrupo.entidades.Inscripcion;
@@ -24,8 +26,8 @@ import universidadgrupo.entidades.Materia;
  */
 public class InscripcionData {
     private Connection con=null;
-    private MateriaData matData;
-    private AlumnoData aluData;
+    public MateriaData matData;
+    public AlumnoData aluData;
 
     public InscripcionData() {
         con=Conexion.getConexion();
@@ -80,11 +82,11 @@ public class InscripcionData {
                 
                 inscripcion.setIdInscripto(rs.getInt("idInscripto"));
                 inscripcion.setNota(rs.getDouble("nota"));
-                Alumno alum=aluData.buscarAlumno(15);
-                System.out.println(alum);
+                Alumno alum=aluData.buscarAlumno(rs.getInt("idAlumno"));
+                //System.out.println(alum);
                // System.out.println("id alumno: "+rs.getInt("idAlumno"));
                 Materia mat = matData.buscarMateria(rs.getInt("idMateria"));
-                //nscripcion.setAlumno(alum);
+                inscripcion.setAlumno(alum);
                 inscripcion.setMateria(mat);
                 
                 
@@ -107,7 +109,7 @@ public class InscripcionData {
         
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            
+            ps.setInt(1, idAlumno);
             ResultSet rs = ps.executeQuery();
             
             while (rs.next()) {
@@ -129,23 +131,71 @@ public class InscripcionData {
         return inscripcionLista;
     }
     
-  /*  //Listar materias cursadas
-    public List<Materia> obtenerMateriasCursadas(int id){
+  //Listar materias cursadas
+    public List<Materia> obtenerMateriasCursadas(int idAlumno){
+        ArrayList<Materia> materiasCursadas=new ArrayList();
         
+        String sql="SELECT inscripcion.idMateria, nombre, anio FROM inscripcion,"
+                + " materia WHERE inscipcion.idMateria=materia.idMateria "
+                + "AND inscripcion.idAlumno = ?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            
+            ResultSet rs = ps.executeQuery();
+             while (rs.next()) {
+                Materia materia = new Materia();
+                
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnio(rs.getInt("anio"));
+                
+                
+                
+                materiasCursadas.add(materia);
+            }            
+            ps.close();
+            
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripciones");
+        }
+        
+        return materiasCursadas;
     }
     
-    //Listar materias no cursadas
+      //Actualiza nota final en materia
+    public void actualizarNota (int idAlumno, int idMateria, double nota){
+        
+    String sql="UPDATE `inscripcion` "
+            + "SET `nota`=? "
+            + "WHERE idAlumno=? AND idMateria=?";
+        try {
+            PreparedStatement ps= con.prepareStatement(sql);
+            
+            ps.setDouble(1, nota);
+            ps.setInt(2, idAlumno);
+            ps.setInt(3, idMateria);
+            int filas =ps.executeUpdate();
+            
+            if(filas>0){
+             
+                JOptionPane.showMessageDialog(null,"Nota actualizada");
+            }
+             ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error alacceder a la tabla inscripcion");
+        }
+   
+    }
+    
+    /*//Listar materias no cursadas
     public List<Materia> obtenerMateriasNOCursadas(int id){
         
     }
     
     //Borra inscripción a materia
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
-        
-    }
-    
-    //Actualiza nota final en materia
-    public void actualizarNota (int idAlumno, int idMateria, double nota){
         
     }
     
