@@ -194,7 +194,32 @@ public class InscripcionData {
     }
     */
     //Borra inscripción a materia
+<<<<<<< Updated upstream
   
+=======
+          
+    public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
+        
+        String sql= "DELETE FROM inscripcion WHERE idAlumno=? AND idMateria=?";
+        
+        try {
+            PreparedStatement ps = con.prepareStatement(sql);
+            ps.setInt(1, idAlumno);
+            ps.setInt(idMateria, idMateria);
+            int filas=ps.executeUpdate();
+            
+            if(filas>0){
+                
+                JOptionPane.showMessageDialog(null,"Inscripcion borrada");
+            }
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null,"Error al acceder a la tabla inscripcion");
+        }
+    }
+    
+    
+>>>>>>> Stashed changes
 
     //Actualiza nota final en materia*/
 
