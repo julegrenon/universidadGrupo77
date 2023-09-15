@@ -19,8 +19,7 @@ import universidadgrupo.entidades.Inscripcion;
 import universidadgrupo.entidades.Materia;
 
 /**
- *
- * @author sonia
+ 
  */
 public class InscripcionData {
     private Connection con=null;
