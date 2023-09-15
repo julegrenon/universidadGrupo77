@@ -1,7 +1,5 @@
 /*
-METODOS OBTENER INSCRIPCIONES AUN NO FUNCIONAN.
-ARROJAN NULL POINTER EXCEPTION
- A REVISAR
+
  */
 package universidadgrupo.AccesoDatos;
 
@@ -31,7 +29,8 @@ public class InscripcionData {
 
     public InscripcionData() {
         con=Conexion.getConexion();
-        
+        aluData=new AlumnoData();
+        matData=new MateriaData();
     }
     
    //Inscribe a materia
@@ -67,37 +66,35 @@ public class InscripcionData {
     
     //Lista todos los inscriptos
     public List<Inscripcion> obtenerInscripciones() {
-        
+
         ArrayList<Inscripcion> inscripcionLista = new ArrayList<>();
-        
+
         String sql = "SELECT * FROM inscripcion";
-        
+
         try {
             PreparedStatement ps = con.prepareStatement(sql);
-            
+
             ResultSet rs = ps.executeQuery();
-            
+
             while (rs.next()) {
                 Inscripcion inscripcion = new Inscripcion();
-                
-                inscripcion.setIdInscripto(rs.getInt("idInscripto"));
-                inscripcion.setNota(rs.getDouble("nota"));
-                Alumno alum=aluData.buscarAlumno(rs.getInt("idAlumno"));
-                //System.out.println(alum);
-               // System.out.println("id alumno: "+rs.getInt("idAlumno"));
-                Materia mat = matData.buscarMateria(rs.getInt("idMateria"));
+
+                inscripcion.setIdInscripto(rs.getInt(1));
+                inscripcion.setNota(rs.getDouble(2));
+                Alumno alum = aluData.buscarAlumno(rs.getInt(3));
+                Materia mat = matData.buscarMateria(rs.getInt(4));
                 inscripcion.setAlumno(alum);
                 inscripcion.setMateria(mat);
-                
-                
+
                 inscripcionLista.add(inscripcion);
-            }            
+            }
             ps.close();
-        } catch (SQLException ex ) {
+        } catch (SQLException ex) {
             JOptionPane.showMessageDialog(null, "Error al acceder a la tabla inscripciones");
-        } catch (NullPointerException ex2){
-            JOptionPane.showMessageDialog(null,ex2);
         }
+        /*catch (NullPointerException ex2){
+            JOptionPane.showMessageDialog(null,ex2);
+        }*/
         return inscripcionLista;
     }
     
