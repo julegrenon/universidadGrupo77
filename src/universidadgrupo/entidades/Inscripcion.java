@@ -14,11 +14,12 @@ public class Inscripcion {
     private Alumno alumno;
     private Materia materia;
     private double nota;
+  
 
     public Inscripcion() {
     }
 
-    public Inscripcion(int idInscripto, Alumno alumno, Materia materia, double nota) {
+    public Inscripcion(int idInscripto, double nota, Alumno alumno, Materia materia) {
         this.idInscripto = idInscripto;
         this.alumno = alumno;
         this.materia = materia;
@@ -31,7 +32,6 @@ public class Inscripcion {
         this.nota = nota;
     }
     
-  
 
     public int getIdInscripto() {
         return idInscripto;
@@ -69,6 +69,14 @@ public class Inscripcion {
     public String toString() {
         String insc=idInscripto+", "+alumno.getNombre()+" "+alumno.getApellido()+", "+materia.getNombre();
         return insc;
+    }
+
+    public void setIdAlumno(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
+    public void setIdMateria(int aInt) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
     }
     
     
