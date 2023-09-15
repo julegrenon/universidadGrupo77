@@ -222,13 +222,7 @@ public class InscripcionData {
     }
     
     //Borra inscripción a materia
-<<<<<<< HEAD
-<<<<<<< Updated upstream
-  
-=======
-          
-=======
->>>>>>> 10909d113cf934ba7b6aa7563f12c88a34bb0214
+
     public void borrarInscripcionMateriaAlumno(int idAlumno, int idMateria){
         
         String sql= "DELETE FROM inscripcion WHERE idAlumno=? AND idMateria=?";
@@ -248,18 +242,7 @@ public class InscripcionData {
             JOptionPane.showMessageDialog(null,"Error al acceder a la tabla inscripcion");
         }
     }
-    
-<<<<<<< HEAD
-    
->>>>>>> Stashed changes
 
-    //Actualiza nota final en materia*/
-
-    /*
-=======
->>>>>>> b1bd1ee7bac54925c0ef7e65354aa6e030822365
-=======
->>>>>>> 10909d113cf934ba7b6aa7563f12c88a34bb0214
     //Lista alumnos x materia
     public List<Alumno> obtenerAlumnosPorMateria (int idMateria){
          ArrayList<Alumno> alumnosMateria=new ArrayList();
@@ -293,4 +276,5 @@ public class InscripcionData {
         
         return alumnosMateria;
     }
+
 }
