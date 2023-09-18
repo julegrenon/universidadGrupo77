@@ -54,8 +54,18 @@ public class Menu extends javax.swing.JFrame {
         );
 
         jMenuAlumnos.setText("Alumnos");
+        jMenuAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuAlumnosActionPerformed(evt);
+            }
+        });
 
         jMenuItemFormAlum.setText("Formulario de alumno");
+        jMenuItemFormAlum.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemFormAlumActionPerformed(evt);
+            }
+        });
         jMenuAlumnos.add(jMenuItemFormAlum);
 
         jMenuBar1.add(jMenuAlumnos);
@@ -117,6 +127,19 @@ public class Menu extends javax.swing.JFrame {
        Escritorio.moveToFront(fm);
        
     }//GEN-LAST:event_jMenuItemFormMatActionPerformed
+
+    private void jMenuAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuAlumnosActionPerformed
+       
+    }//GEN-LAST:event_jMenuAlumnosActionPerformed
+
+    private void jMenuItemFormAlumActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemFormAlumActionPerformed
+        Escritorio.removeAll();
+       Escritorio.repaint();
+       FormularioAlumnos fa= new FormularioAlumnos();
+       fa.setVisible(true);
+       Escritorio. add(fa);
+       Escritorio.moveToFront(fa);
+    }//GEN-LAST:event_jMenuItemFormAlumActionPerformed
 
     /**
      * @param args the command line arguments
