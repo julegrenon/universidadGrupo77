@@ -9,6 +9,7 @@ import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.time.LocalDate;
+import java.time.ZoneId;
 import java.time.format.DateTimeFormatter;
 import java.time.format.DateTimeFormatterBuilder;
 import java.util.Calendar;
@@ -16,20 +17,17 @@ import javax.swing.JOptionPane;
 import universidadgrupo.AccesoDatos.AlumnoData;
 import universidadgrupo.entidades.Alumno;
 
-/**
- *
- * @author sonia
- */
+
 public class FormularioAlumnos extends javax.swing.JInternalFrame {
-     private AlumnoData aluData;
-    // private Alumno alumno;
+
+    private AlumnoData aluData;
+
     /**
      * Creates new form FormularioAlumnos
      */
     public FormularioAlumnos() {
         initComponents();
-        this.aluData=new AlumnoData();
-       // this.alumno=new Alumno();
+        this.aluData = new AlumnoData();
     }
 
     /**
@@ -173,36 +171,31 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
-    
-    
+    //casteo de date a local date
+    public LocalDate fromDateToLocalDate(Date date) {
+        return date.toInstant()
+                .atZone(ZoneId.systemDefault())
+                .toLocalDate();
+    }
+
     private void jButtonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoActionPerformed
-        //NO FUNCIONA. EXCEPCION A PARSEAR FECHA
-        //DEBE CAMBIARSE EL FORMATO DE dd-MM-yyyy A yyyy-MM-dd
-        
+
         try {
-            
             boolean estado = false;
             String dni = jTextFieldDNI.getText();
             int dniNum = Integer.parseInt(dni);
             String apellido = jTextFieldApellido.getText();
             String nombre = jTextFieldNombre.getText();
-            //String fecha = jDateFechaNac.getDateFormatString();
-            Date fecha=jDateFechaNac.getDate();
-            String pattern  = "yyyy-MM-dd";
-            DateFormat formatter = new SimpleDateFormat(pattern);
-            formatter.format(fecha);
-           // LocalDate fechaNac=LocalDate.parse(fecha);
-            
-            
-           
+            LocalDate fecha = fromDateToLocalDate(jDateFechaNac.getDate());
+
             if (jRadioButtonEstado.isSelected()) {
                 estado = true;
             } else {
                 estado = false;
             }
-           // Alumno alumno = new Alumno(dniNum, apellido, nombre, fechaNac, estado);
+            Alumno alumno = new Alumno(dniNum, apellido, nombre, fecha, estado);
 
-            //aluData.guardarAlumno(alumno);
+            aluData.guardarAlumno(alumno);
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
         }
