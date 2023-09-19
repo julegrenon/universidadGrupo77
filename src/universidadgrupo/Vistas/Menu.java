@@ -85,6 +85,11 @@ public class Menu extends javax.swing.JFrame {
         jMenuAdmin.setText("Administración");
 
         jMenuItemManejoInsc.setText("Manejo de inscripciones");
+        jMenuItemManejoInsc.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemManejoInscActionPerformed(evt);
+            }
+        });
         jMenuAdmin.add(jMenuItemManejoInsc);
 
         jMenuItemManipNotas.setText("Manipulación de notas");
@@ -140,6 +145,15 @@ public class Menu extends javax.swing.JFrame {
        Escritorio. add(fa);
        Escritorio.moveToFront(fa);
     }//GEN-LAST:event_jMenuItemFormAlumActionPerformed
+
+    private void jMenuItemManejoInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManejoInscActionPerformed
+        Escritorio.removeAll();
+        Escritorio.repaint();
+        FormularioInscripciones fi = new FormularioInscripciones();
+        fi.setVisible(true);
+        Escritorio.add(fi);
+        Escritorio.moveToFront(fi);
+    }//GEN-LAST:event_jMenuItemManejoInscActionPerformed
 
     /**
      * @param args the command line arguments
