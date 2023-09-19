@@ -5,6 +5,7 @@
  */
 package universidadgrupo.Vistas;
 
+import java.text.DateFormat;
 import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.time.LocalDate;
@@ -185,17 +186,23 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
             int dniNum = Integer.parseInt(dni);
             String apellido = jTextFieldApellido.getText();
             String nombre = jTextFieldNombre.getText();
-            String fecha = jDateFechaNac.getDateFormatString();
-            DateTimeFormatter dtf= DateTimeFormatter.ofPattern("dd-MM-yyyy");
-            LocalDate fechaNac= LocalDate.parse(fecha, dtf);
+            //String fecha = jDateFechaNac.getDateFormatString();
+            Date fecha=jDateFechaNac.getDate();
+            String pattern  = "yyyy-MM-dd";
+            DateFormat formatter = new SimpleDateFormat(pattern);
+            formatter.format(fecha);
+           // LocalDate fechaNac=LocalDate.parse(fecha);
+            
+            
+           
             if (jRadioButtonEstado.isSelected()) {
                 estado = true;
             } else {
                 estado = false;
             }
-            Alumno alumno = new Alumno(dniNum, apellido, nombre, fechaNac, estado);
+           // Alumno alumno = new Alumno(dniNum, apellido, nombre, fechaNac, estado);
 
-            aluData.guardarAlumno(alumno);
+            //aluData.guardarAlumno(alumno);
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
         }
