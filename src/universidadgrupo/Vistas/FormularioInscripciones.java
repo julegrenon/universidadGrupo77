@@ -181,9 +181,11 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
     private void jCheckBoxInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxInscActionPerformed
         try {
             cargarTablaInsc();
+            jCheckBoxNoInsc.setSelected(false);
             
         } catch (Exception e) {
             
+            jCheckBoxInsc.setSelected(false);
             JOptionPane.showMessageDialog(this, "Debes seleccionar un alumno.");
 
         }
@@ -192,9 +194,11 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
     private void jCheckBoxNoInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxNoInscActionPerformed
         try {
             cargarTablaNoInsc();
+            jCheckBoxInsc.setSelected(false);
             
         } catch (Exception e) {
             
+            jCheckBoxNoInsc.setSelected(false);
             JOptionPane.showMessageDialog(this, "Debes seleccionar un alumno.");
 
         }
@@ -204,31 +208,26 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
         int filaSeleccionada = jTableListaMaterias.getSelectedRow();
         
         if (filaSeleccionada != -1) {
-            try {
-                int idMateria = (int) jTableListaMaterias.getValueAt(filaSeleccionada, 0);
-                int idAlumnoSeleccionado = jComboBoxAlumnos.getSelectedIndex();
-                
-                Alumno alumnoSeleccionado = alumnoData.buscarAlumno(idAlumnoSeleccionado);
-                Materia materiaSeleccionada = materiaData.buscarMateria(idMateria);
-
-                Inscripcion inscripcion = new Inscripcion(alumnoSeleccionado, materiaSeleccionada);
-
-                inscripcionData.guardarInscripcion(inscripcion);
-
-                if (jCheckBoxInsc.isSelected()) {
-                    cargarTablaInsc();
-                } else if (jCheckBoxNoInsc.isSelected()) {
-                    cargarTablaNoInsc();
-                    
-                    if (filaSeleccionada != -1) {
 
                         jButtonInscribir.setEnabled(true);
 
                     } else {
                         jButtonInscribir.setEnabled(false);
                     }
-                    
-                }
+        
+        if (filaSeleccionada != -1) {
+            try {
+                Materia idMateria = (Materia) jTableListaMaterias.getValueAt(filaSeleccionada, 0);
+                Alumno idAlumnoSeleccionado = (Alumno) jComboBoxAlumnos.getSelectedItem();
+                
+                Alumno alumnoSeleccionado = alumnoData.buscarAlumno(idAlumnoSeleccionado.getIdAlumno());
+                Materia materiaSeleccionada = materiaData.buscarMateria(idMateria.getIdMateria());
+
+                Inscripcion inscripcion = new Inscripcion(alumnoSeleccionado, materiaSeleccionada);
+
+                inscripcionData.guardarInscripcion(inscripcion);
+
+
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Error al realizar la inscripción: " + e.getMessage());
             }
@@ -242,6 +241,14 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
         int filaSeleccionada = jTableListaMaterias.getSelectedRow();
         
         if (filaSeleccionada != -1) {
+
+            jButtonAnular.setEnabled(true);
+
+        } else {
+            jButtonAnular.setEnabled(false);
+        }
+        
+        if (filaSeleccionada != -1) {
             try {
                 int idMateria = (int) jTableListaMaterias.getValueAt(filaSeleccionada, 0);
                 int idAlumnoSeleccionado = jComboBoxAlumnos.getSelectedIndex();
@@ -251,20 +258,6 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
                 
                 inscripcionData.borrarInscripcionMateriaAlumno(idAlumnoSeleccionado, idMateria);
 
-                if (jCheckBoxInsc.isSelected()) {
-                    cargarTablaInsc();
-                    
-                    if (filaSeleccionada != -1) {
-
-                        jButtonAnular.setEnabled(true);
-
-                    } else {
-                        jButtonAnular.setEnabled(false);
-                    }
-                    
-                } else if (jCheckBoxNoInsc.isSelected()) {
-                    cargarTablaNoInsc();
-                }
             } catch (Exception e) {
                 JOptionPane.showMessageDialog(this, "Error al anular la inscripción: " + e.getMessage());
             }

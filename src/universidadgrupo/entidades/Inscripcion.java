@@ -38,8 +38,6 @@ public class Inscripcion {
     }
     
     
-
-
     public int getIdInscripto() {
         return idInscripto;
     }
