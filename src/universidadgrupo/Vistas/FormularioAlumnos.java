@@ -1,7 +1,6 @@
 /*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
+ SE ESTÁ TRABAJANDO EN EL BOTON GUARDAR (QUE MODIFICA DATOS DE ALUMNO) AUN SIN FUNCIONAR.
+FUNCIONANDO BOTON NUEVO (GUARDAR NUEVO ALUMNO) Y BUSCAR (BUSCA ALUMNO X DNI)
  */
 package universidadgrupo.Vistas;
 
@@ -80,10 +79,20 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
         jButtonEliminar.setText("Eliminar");
 
         jButtonGuardar.setText("Guardar");
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarActionPerformed(evt);
+            }
+        });
 
         jButtonSalir.setText("Salir");
 
         jButtonBuscar.setText("Buscar");
+        jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonBuscarActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -200,6 +209,55 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
         }
     }//GEN-LAST:event_jButtonNuevoActionPerformed
+
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+        try {
+            boolean estado = false;
+            String dni = jTextFieldDNI.getText();
+            int dniNum = Integer.parseInt(dni);
+            String apellido = jTextFieldApellido.getText();
+            String nombre = jTextFieldNombre.getText();
+            LocalDate fecha = fromDateToLocalDate(jDateFechaNac.getDate());
+
+            if (jRadioButtonEstado.isSelected()) {
+                estado = true;
+            } else {
+                estado = false;
+            }
+            Alumno alumno = new Alumno(dniNum, apellido, nombre, fecha, estado);
+
+            aluData.modificarAlumno(alumno);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
+        }
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
+
+    private void jButtonBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonBuscarActionPerformed
+
+        String dni = jTextFieldDNI.getText();
+        int dniNum = Integer.parseInt(dni);
+
+        Alumno alumnoEncontrado = aluData.buscarAlumnoPorDni(dniNum);
+
+        if (alumnoEncontrado.isEstado()) {
+            jTextFieldNombre.setText(alumnoEncontrado.getNombre());
+            jTextFieldApellido.setText(alumnoEncontrado.getApellido());
+
+            ZoneId defaultZoneId = ZoneId.systemDefault();
+
+            //crea instancia localDate para guardar la fecha
+            LocalDate localDate = alumnoEncontrado.getFechaNacimiento();
+
+            //casteo de LocalDate a Date fechaNac
+            Date date = Date.from(localDate.atStartOfDay(defaultZoneId).toInstant());
+
+            jDateFechaNac.setDate(date);
+            jRadioButtonEstado.setSelected(true);
+        } else {
+            JOptionPane.showMessageDialog(null, "Alumno inactivo o inexistente");
+        }
+
+    }//GEN-LAST:event_jButtonBuscarActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
