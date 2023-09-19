@@ -141,7 +141,7 @@ public class AlumnoData {
                 alumno.setIdAlumno(rs.getInt("idAlumno"));
                 alumno.setDni(dni);
                 alumno.setApellido(rs.getString("apellido"));
-                alumno.setNombre("nombre");
+                alumno.setNombre(rs.getString("nombre"));
                 alumno.setFechaNacimiento(rs.getDate("fechaNacimiento").toLocalDate());
                 alumno.setEstado(true);
             } else {
