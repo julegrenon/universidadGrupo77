@@ -1,8 +1,4 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
+
 package universidadgrupo.Vistas;
 
 import java.sql.*;
@@ -11,7 +7,6 @@ import java.util.logging.Logger;
 import universidadgrupo.AccesoDatos.MateriaData;
 import universidadgrupo.entidades.Materia;
 
-
 public class FormularioMateria extends javax.swing.JInternalFrame {
 
     private MateriaData matData;
@@ -19,7 +14,6 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         initComponents();
         this.matData = new MateriaData();
     }
-
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
