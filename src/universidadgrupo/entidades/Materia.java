@@ -33,6 +33,10 @@ public class Materia {
         this.estado = estado;
     }
 
+    public Materia(int idMat, String nombre, String anio, boolean b) {
+        throw new UnsupportedOperationException("Not supported yet."); //To change body of generated methods, choose Tools | Templates.
+    }
+
     public int getIdMateria() {
         return idMateria;
     }
