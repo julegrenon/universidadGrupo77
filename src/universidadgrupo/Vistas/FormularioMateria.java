@@ -4,6 +4,7 @@ package universidadgrupo.Vistas;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
+import javax.swing.JOptionPane;
 import universidadgrupo.AccesoDatos.MateriaData;
 import universidadgrupo.entidades.Materia;
 
@@ -33,6 +34,8 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         jBSalir = new javax.swing.JButton();
         jREstado = new javax.swing.JRadioButton();
 
+        setPreferredSize(new java.awt.Dimension(400, 280));
+
         jLCodigo.setText("Código");
 
         jLNombre.setText("Nombre");
@@ -52,12 +55,32 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         });
 
         jBNuevo.setText("Nuevo");
+        jBNuevo.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBNuevoActionPerformed(evt);
+            }
+        });
 
         jBEliminar.setText("Eliminar");
+        jBEliminar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBEliminarActionPerformed(evt);
+            }
+        });
 
         jBGuardar.setText("Guardar");
+        jBGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBGuardarActionPerformed(evt);
+            }
+        });
 
         jBSalir.setText("Salir");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -135,14 +158,35 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
     }// </editor-fold>//GEN-END:initComponents
 
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
-       int idMat = Integer.parseInt(jTCodigo.getText());
+  
+        int idMat = Integer.parseInt(jTCodigo.getText());
          Materia mate = matData.buscarMateria(idMat);
-         
-         
+     
          jTNombre.setText(mate.getNombre());
          jTAño.setText(mate.getAnio()+"");
          jREstado.setSelected(mate.isEstado());
+  
     }//GEN-LAST:event_jBBuscarActionPerformed
+
+    private void jBNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBNuevoActionPerformed
+       jTCodigo.setText("");
+       jTNombre.setText("");
+       jTAño.setText("");
+       jREstado.setSelected(false);
+       
+    }//GEN-LAST:event_jBNuevoActionPerformed
+
+    private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBEliminarActionPerformed
+
+    private void jBGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBGuardarActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBGuardarActionPerformed
+
+    private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+        // TODO add your handling code here:
+    }//GEN-LAST:event_jBSalirActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBBuscar;
