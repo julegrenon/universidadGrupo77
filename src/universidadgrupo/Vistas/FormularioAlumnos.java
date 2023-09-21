@@ -48,7 +48,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
         jLabel5 = new javax.swing.JLabel();
         jLabel6 = new javax.swing.JLabel();
         jRadioButtonEstado = new javax.swing.JRadioButton();
-        jButtonNuevo = new javax.swing.JButton();
+        jButtonAgregar = new javax.swing.JButton();
         jButtonEliminar = new javax.swing.JButton();
         jButtonGuardar = new javax.swing.JButton();
         jButtonSalir = new javax.swing.JButton();
@@ -70,10 +70,10 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
 
         jLabel6.setText("Fecha de nacimiento:");
 
-        jButtonNuevo.setText("Agregar");
-        jButtonNuevo.addActionListener(new java.awt.event.ActionListener() {
+        jButtonAgregar.setText("Agregar");
+        jButtonAgregar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jButtonNuevoActionPerformed(evt);
+                jButtonAgregarActionPerformed(evt);
             }
         });
 
@@ -143,7 +143,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
                                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 14, Short.MAX_VALUE)
                                         .addComponent(jButtonLimpiar))))
                             .addGroup(layout.createSequentialGroup()
-                                .addComponent(jButtonNuevo)
+                                .addComponent(jButtonAgregar)
                                 .addGap(36, 36, 36)
                                 .addComponent(jButtonEliminar)
                                 .addGap(45, 45, 45)
@@ -189,7 +189,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
                         .addComponent(jRadioButtonEstado)))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 53, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jButtonNuevo)
+                    .addComponent(jButtonAgregar)
                     .addComponent(jButtonEliminar)
                     .addComponent(jButtonGuardar)
                     .addComponent(jButtonSalir))
@@ -206,7 +206,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
                 .toLocalDate();
     }
 
-    private void jButtonNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonNuevoActionPerformed
+    private void jButtonAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonAgregarActionPerformed
 
         try {
             boolean estado = false;
@@ -227,7 +227,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
         } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
         }
-    }//GEN-LAST:event_jButtonNuevoActionPerformed
+    }//GEN-LAST:event_jButtonAgregarActionPerformed
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
       try {
@@ -322,11 +322,11 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
+    private javax.swing.JButton jButtonAgregar;
     private javax.swing.JButton jButtonBuscar;
     private javax.swing.JButton jButtonEliminar;
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonLimpiar;
-    private javax.swing.JButton jButtonNuevo;
     private javax.swing.JButton jButtonSalir;
     private com.toedter.calendar.JDateChooser jDateFechaNac;
     private javax.swing.JLabel jLabel1;
