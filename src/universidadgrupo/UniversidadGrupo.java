@@ -20,7 +20,6 @@ public class UniversidadGrupo {
 
    
     public static void main(String[] args) {
-     
     
     }
         }
