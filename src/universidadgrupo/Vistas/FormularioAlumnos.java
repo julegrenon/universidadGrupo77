@@ -92,6 +92,11 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
         });
 
         jButtonSalir.setText("Salir");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
 
         jButtonBuscar.setText("Buscar");
         jButtonBuscar.addActionListener(new java.awt.event.ActionListener() {
@@ -322,6 +327,10 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
         }
     }//GEN-LAST:event_jButtonEliminarActionPerformed
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonSalirActionPerformed
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
