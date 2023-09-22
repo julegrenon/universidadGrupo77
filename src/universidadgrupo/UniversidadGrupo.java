@@ -20,11 +20,7 @@ public class UniversidadGrupo {
 
    
     public static void main(String[] args) {
-     
-    Materia materia= new Materia(8,"Frances",3, true);
-     MateriaData mat= new MateriaData();
-     //mat.guardarMateria(materia);
-    mat.modificarMateria(materia);
+  
     }
         }
 
