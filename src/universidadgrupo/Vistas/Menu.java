@@ -108,6 +108,11 @@ public class Menu extends javax.swing.JFrame {
         });
 
         jMenuItemAlumnoXMat.setText("Alumnos por materia");
+        jMenuItemAlumnoXMat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlumnoXMatActionPerformed(evt);
+            }
+        });
         jMenuConsultas.add(jMenuItemAlumnoXMat);
 
         jMenuBar1.add(jMenuConsultas);
@@ -164,13 +169,18 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItemManejoInscActionPerformed
 
     private void jMenuConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultasActionPerformed
+   
+    }//GEN-LAST:event_jMenuConsultasActionPerformed
+
+    private void jMenuItemAlumnoXMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlumnoXMatActionPerformed
+      
         Escritorio.removeAll();
         Escritorio.repaint();
-        FormularioInscripciones laxm = new FormularioInscripciones();
+        FormListadoAlumnosXMateria laxm = new FormListadoAlumnosXMateria();
         laxm.setVisible(true);
         Escritorio.add(laxm);
         Escritorio.moveToFront(laxm);
-    }//GEN-LAST:event_jMenuConsultasActionPerformed
+    }//GEN-LAST:event_jMenuItemAlumnoXMatActionPerformed
 
     /**
      * @param args the command line arguments
