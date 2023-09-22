@@ -1,7 +1,6 @@
 
 package universidadgrupo.Vistas;
 
-import java.beans.PropertyVetoException;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -188,51 +187,27 @@ try{
     
     private void jBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAgregarActionPerformed
      
-        try{
         String nombreMate=jTNombre.getText();
         int anio=Integer.parseInt(jTAño.getText());
         Boolean estado=jREstado.isSelected();
         MateriaData nuevaMate=new MateriaData();
         Materia materia= new Materia(nombreMate, anio, estado);
-      
-        if((jTNombre!=null )&& (jTAño!=null )&& jREstado.isSelected()){
-            nuevaMate.guardarMateria(materia);
-        }
-        }catch(NumberFormatException ex){
-        JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
-        }
+        nuevaMate.guardarMateria(materia);
+        
     }//GEN-LAST:event_jBAgregarActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
   
-           int codigo=Integer.parseInt(jTCodigo.getText());
-           String nombreMate=jTNombre.getText();
-           int anio=Integer.parseInt(jTAño.getText());
-           Boolean estado=jREstado.isSelected();
         
-          MateriaData materiaSelec=new MateriaData();
-          Materia materia= new Materia(nombreMate, anio, estado);
-          materiaSelec.eliminarMateria(codigo);
-         
+        
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-      
-         int codigo=Integer.parseInt(jTCodigo.getText());
-           String nombre=jTNombre.getText();
-           int anio=Integer.parseInt(jTAño.getText());
-           Boolean estado=jREstado.isSelected();
-           
-           MateriaData mpm=new MateriaData();
-          Materia materia= new Materia(codigo,nombre, anio, estado);
-          
-          
-          mpm.modificarMateria(materia);
+        // TODO add your handling code here:
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-    
-    dispose();
+        // TODO add your handling code here:
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed

@@ -191,9 +191,12 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
 
     private void jCheckBoxInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxInscActionPerformed
         try {
-            cargarTablaInsc();
-            jCheckBoxNoInsc.setSelected(false);
+            if(jCheckBoxInsc.isSelected()){
+                cargarTablaInsc();
+            }
             
+            jCheckBoxNoInsc.setSelected(false);
+
         } catch (Exception e) {
             
             jCheckBoxInsc.setSelected(false);
@@ -204,7 +207,10 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
 
     private void jCheckBoxNoInscActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCheckBoxNoInscActionPerformed
         try {
-            cargarTablaNoInsc();
+            if(jCheckBoxNoInsc.isSelected()){
+                cargarTablaNoInsc();
+            }
+            
             jCheckBoxInsc.setSelected(false);
             
         } catch (Exception e) {
@@ -279,6 +285,12 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
                 jButtonAnular.setEnabled(true);
                 jButtonInscribir.setEnabled(false);
             }
+        } else if (!jCheckBoxInsc.isSelected() && !jCheckBoxNoInsc.isSelected()) {
+            jButtonInscribir.setEnabled(false);
+            jButtonAnular.setEnabled(false);
+            
+            modelo.addRow(new Object[]{});
+            
         }
     }//GEN-LAST:event_jTableListaMateriasMouseClicked
 
@@ -289,7 +301,7 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
     private javax.swing.JButton jButtonSalir;
     private javax.swing.JCheckBox jCheckBoxInsc;
     private javax.swing.JCheckBox jCheckBoxNoInsc;
-    private javax.swing.JComboBox<String> jComboBoxAlumnos;
+    private javax.swing.JComboBox<Alumno> jComboBoxAlumnos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
@@ -308,7 +320,7 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
         List<Alumno> nombres = alumnoData.listarAlumnos();
         for (Alumno nombre : nombres) {
             
-            jComboBoxAlumnos.addItem(nombre.toString());
+            jComboBoxAlumnos.addItem(nombre);
             
         }
     }

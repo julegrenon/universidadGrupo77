@@ -20,6 +20,10 @@ public class UniversidadGrupo {
 
    
     public static void main(String[] args) {
+<<<<<<< HEAD
+        
+=======
+>>>>>>> 7bfc40c85d5d2073e80984349e359a6c2a00c360
 
     }
         }
