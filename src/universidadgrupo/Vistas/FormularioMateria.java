@@ -1,6 +1,7 @@
 
 package universidadgrupo.Vistas;
 
+import java.beans.PropertyVetoException;
 import java.sql.*;
 import java.util.logging.Level;
 import java.util.logging.Logger;
@@ -230,7 +231,8 @@ try{
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-        // TODO add your handling code here:
+    
+    dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
