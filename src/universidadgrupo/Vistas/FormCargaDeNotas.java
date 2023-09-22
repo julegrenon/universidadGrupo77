@@ -83,7 +83,7 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
             }
         });
 
-        jComboBoxAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
         jComboBoxAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxAlumnosActionPerformed(evt);
