@@ -20,11 +20,7 @@ public class UniversidadGrupo {
 
    
     public static void main(String[] args) {
-<<<<<<< HEAD
-  
-=======
-    
->>>>>>> 23d7cf6aa5cc6377221e46dc9b159b877bc7ec46
+
     }
         }
 
