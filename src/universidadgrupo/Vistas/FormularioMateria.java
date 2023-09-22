@@ -187,23 +187,46 @@ try{
     
     private void jBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAgregarActionPerformed
      
+        try{
         String nombreMate=jTNombre.getText();
         int anio=Integer.parseInt(jTAño.getText());
         Boolean estado=jREstado.isSelected();
         MateriaData nuevaMate=new MateriaData();
         Materia materia= new Materia(nombreMate, anio, estado);
-        nuevaMate.guardarMateria(materia);
-        
+      
+        if((jTNombre!=null )&& (jTAño!=null )&& jREstado.isSelected()){
+            nuevaMate.guardarMateria(materia);
+        }
+        }catch(NumberFormatException ex){
+        JOptionPane.showMessageDialog(rootPane, "Debe llenar todos los campos");
+        }
     }//GEN-LAST:event_jBAgregarActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
   
+           int codigo=Integer.parseInt(jTCodigo.getText());
+           String nombreMate=jTNombre.getText();
+           int anio=Integer.parseInt(jTAño.getText());
+           Boolean estado=jREstado.isSelected();
         
-        
+          MateriaData materiaSelec=new MateriaData();
+          Materia materia= new Materia(nombreMate, anio, estado);
+          materiaSelec.eliminarMateria(codigo);
+         
     }//GEN-LAST:event_jBEliminarActionPerformed
 
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-        // TODO add your handling code here:
+      
+         int codigo=Integer.parseInt(jTCodigo.getText());
+           String nombre=jTNombre.getText();
+           int anio=Integer.parseInt(jTAño.getText());
+           Boolean estado=jREstado.isSelected();
+           
+           MateriaData mpm=new MateriaData();
+          Materia materia= new Materia(codigo,nombre, anio, estado);
+          
+          
+          mpm.modificarMateria(materia);
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
