@@ -11,6 +11,8 @@ import universidadgrupo.AccesoDatos.AlumnoData;
 import universidadgrupo.AccesoDatos.InscripcionData;
 import universidadgrupo.AccesoDatos.MateriaData;
 import universidadgrupo.entidades.Alumno;
+import universidadgrupo.entidades.Inscripcion;
+import universidadgrupo.entidades.Materia;
 
 /**
  *
@@ -34,6 +36,7 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
         initComponents();
         llenarComboBox();
         cargarColumnas();
+        
     }
 
     /**
@@ -81,6 +84,11 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
         });
 
         jComboBoxAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        jComboBoxAlumnos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jComboBoxAlumnosActionPerformed(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -131,6 +139,10 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
         dispose();
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
+    private void jComboBoxAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAlumnosActionPerformed
+        
+    }//GEN-LAST:event_jComboBoxAlumnosActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGuardar;
@@ -144,20 +156,47 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
 
     
     //llenar combo box lista alumnos
-        private void llenarComboBox(){
+    private void llenarComboBox() {
         List<Alumno> nombres = alumnoData.listarAlumnos();
         for (Alumno nombre : nombres) {
-            
+
             jComboBoxAlumnos.addItem(nombre.toString());
-            
+
         }
     }
-        
-        private void cargarColumnas(){
+    
+    //setea nombre de columnas
+    private void cargarColumnas() {
         modelo.addColumn("Código");
         modelo.addColumn("Materia");
         modelo.addColumn("Nota");
         jTableListaAlumnos.setModel(modelo);
+    }
+
+    private Alumno obtenerAlumnoSeleccionado() {
+        int indiceSeleccionado = jComboBoxAlumnos.getSelectedIndex();
+        if (indiceSeleccionado != -1) {
+            return alumnoData.listarAlumnos().get(indiceSeleccionado);
+        }
+        return null;
+    }
+
+    private void cargarTabla() {
+
+        modelo.setRowCount(0);
+        Alumno alumnoSeleccionado = obtenerAlumnoSeleccionado();
+
+        if (alumnoSeleccionado != null) {
+
+            List<Inscripcion> nombres = inscripcionData.obtenerInscripcionesPorAlumno(alumnoSeleccionado.getIdAlumno());
+            for (Inscripcion nombre : nombres) {
+                if (nombre != null) {
+                    modelo.addRow(new Object[]{
+                        nombre.getMateria().getIdMateria(), nombre.getMateria().getNombre(), nombre.getNota()
+                    });
+                }
+            }
+        }
     }
 
 }
