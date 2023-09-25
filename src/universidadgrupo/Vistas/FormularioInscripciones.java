@@ -64,10 +64,16 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
         jCheckBoxNoInsc = new javax.swing.JCheckBox();
 
         jLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
+        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
         jLabel1.setText("Formulario de Inscripción");
 
         jLabel2.setText("Seleccione un alumno:");
+
+        jComboBoxAlumnos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxAlumnosItemStateChanged(evt);
+            }
+        });
 
         jLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
         jLabel3.setText("Listado de Materias");
@@ -107,6 +113,11 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
         });
 
         jButtonSalir.setText("Salir");
+        jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonSalirActionPerformed(evt);
+            }
+        });
 
         jCheckBoxInsc.setText("Materias Inscriptas");
         jCheckBoxInsc.addActionListener(new java.awt.event.ActionListener() {
@@ -126,53 +137,51 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addGap(18, 18, 18)
-                .addComponent(jButtonInscribir)
-                .addGap(97, 97, 97)
-                .addComponent(jButtonAnular)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jButtonSalir)
-                .addGap(83, 83, 83))
-            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                .addComponent(jCheckBoxInsc)
-                .addGap(213, 213, 213)
-                .addComponent(jCheckBoxNoInsc)
-                .addGap(20, 20, 20))
-            .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(164, 164, 164)
-                        .addComponent(jLabel1))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGap(28, 28, 28)
-                        .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 476, javax.swing.GroupLayout.PREFERRED_SIZE)))
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
-                .addComponent(jLabel2)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addGap(62, 62, 62)
-                        .addComponent(jLabel3))
-                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                         .addComponent(jComboBoxAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(20, 20, 20))))
+                        .addGap(20, 20, 20))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addGap(0, 43, Short.MAX_VALUE)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
+                                    .addComponent(jScrollPane1)
+                                    .addGroup(layout.createSequentialGroup()
+                                        .addComponent(jCheckBoxInsc)
+                                        .addGap(213, 213, 213)
+                                        .addComponent(jCheckBoxNoInsc)))
+                                .addGap(20, 20, 20))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jLabel3)
+                                .addGap(206, 206, 206))
+                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                                .addComponent(jButtonInscribir)
+                                .addGap(74, 74, 74)
+                                .addComponent(jButtonAnular)
+                                .addGap(72, 72, 72)
+                                .addComponent(jButtonSalir)
+                                .addGap(83, 83, 83))))))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(182, 182, 182)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addContainerGap()
                 .addComponent(jLabel1)
-                .addGap(18, 18, 18)
+                .addGap(24, 24, 24)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBoxAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 23, Short.MAX_VALUE)
+                .addGap(18, 18, 18)
                 .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBoxNoInsc)
                     .addComponent(jCheckBoxInsc))
@@ -195,6 +204,16 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
                 cargarTablaInsc();
             }
             
+            if (!jCheckBoxInsc.isSelected() && !jCheckBoxNoInsc.isSelected()) {
+                cargarTablaVacia();
+            }
+            
+            int filaSeleccionada = jTableListaMaterias.getSelectedRow();
+            if(filaSeleccionada == -1){
+                jButtonAnular.setEnabled(false);
+                jButtonInscribir.setEnabled(false);
+            }
+            
             jCheckBoxNoInsc.setSelected(false);
 
         } catch (Exception e) {
@@ -211,8 +230,18 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
                 cargarTablaNoInsc();
             }
             
-            jCheckBoxInsc.setSelected(false);
+            if (!jCheckBoxInsc.isSelected() && !jCheckBoxNoInsc.isSelected()) {
+                cargarTablaVacia();
+            }
             
+            int filaSeleccionada = jTableListaMaterias.getSelectedRow();
+            if(filaSeleccionada == -1){
+                jButtonAnular.setEnabled(false);
+                jButtonInscribir.setEnabled(false);
+            }
+            
+            jCheckBoxInsc.setSelected(false);
+  
         } catch (Exception e) {
             
             jCheckBoxNoInsc.setSelected(false);
@@ -288,11 +317,23 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
         } else if (!jCheckBoxInsc.isSelected() && !jCheckBoxNoInsc.isSelected()) {
             jButtonInscribir.setEnabled(false);
             jButtonAnular.setEnabled(false);
-            
-            modelo.addRow(new Object[]{});
-            
+
         }
     }//GEN-LAST:event_jTableListaMateriasMouseClicked
+
+    private void jButtonSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonSalirActionPerformed
+        dispose();
+    }//GEN-LAST:event_jButtonSalirActionPerformed
+
+    private void jComboBoxAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxAlumnosItemStateChanged
+        cargarTablaVacia();
+        
+        jButtonAnular.setEnabled(false);
+        jButtonInscribir.setEnabled(false);
+        
+        jCheckBoxInsc.setSelected(false);
+        jCheckBoxNoInsc.setSelected(false);
+    }//GEN-LAST:event_jComboBoxAlumnosItemStateChanged
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -368,6 +409,13 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
         }
         return null;
     }
+    
+    private void cargarTablaVacia(){
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+    }
+    
 }
 
 
