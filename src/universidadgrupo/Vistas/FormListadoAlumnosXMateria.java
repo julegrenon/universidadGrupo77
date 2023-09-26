@@ -13,27 +13,28 @@ import universidadgrupo.AccesoDatos.MateriaData;
 import universidadgrupo.entidades.Alumno;
 import universidadgrupo.entidades.Materia;
 
-/**
- *
- * @author sonia
- */
+
 public class FormListadoAlumnosXMateria extends javax.swing.JInternalFrame {
 
-  private DefaultTableModel modelo = new DefaultTableModel(){
- 
+
+     private  ArrayList<Materia> materias=new ArrayList <>();
+    // private ArrayList<Alumno> alumnosLista=new ArrayList();
+     
+     private AlumnoData alumnoData = new AlumnoData();
+     private MateriaData materiaData = new MateriaData();
+        
+     private DefaultTableModel modelo = new DefaultTableModel(){ 
         public boolean isCellEditable(int f, int c){
             return false;
         }        
     };
-    
-  
-  
-  private AlumnoData alumnoData = new AlumnoData();
-  private MateriaData materiaData = new MateriaData();
-
     public FormListadoAlumnosXMateria() {
         initComponents();
         armarCabecera();
+ 
+        materiaData.listarMaterias();
+        
+ 
     }
 
     /**
@@ -56,6 +57,12 @@ public class FormListadoAlumnosXMateria extends javax.swing.JInternalFrame {
         jLabel1.setText("Listado de Alumnos por Materia");
 
         jLSelector.setText("Seleccione una materia");
+
+        jCBListaMaterias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jCBListaMateriasActionPerformed(evt);
+            }
+        });
 
         jTAlumnos.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -123,6 +130,10 @@ public class FormListadoAlumnosXMateria extends javax.swing.JInternalFrame {
        dispose();
     }//GEN-LAST:event_jBSalirActionPerformed
 
+    private void jCBListaMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBListaMateriasActionPerformed
+      
+    }//GEN-LAST:event_jCBListaMateriasActionPerformed
+
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBSalir;
@@ -143,13 +154,22 @@ public class FormListadoAlumnosXMateria extends javax.swing.JInternalFrame {
         jTAlumnos.setModel(modelo); 
     }
     
-    private void cargarCombo(){
+    private void cargarComboBox(){
 
-      
+         jCBListaMaterias.removeAllItems();
+        
+       ArrayList<Materia> materias = (ArrayList<Materia>) materiaData.listarMateria();
+        for (Materia mat: materias) {    
+     
+            
+                          }
+        
+                 }
+    
         }
    
    
-}
+
 
 
 
