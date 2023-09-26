@@ -11,6 +11,7 @@ import universidadgrupo.entidades.Materia;
 public class FormularioMateria extends javax.swing.JInternalFrame {
 
     private MateriaData matData;
+    
     public FormularioMateria() {
         initComponents();
         this.matData = new MateriaData();
@@ -166,7 +167,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+// TIENE ERROR
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
   
 try{
@@ -176,11 +177,14 @@ try{
          jTNombre.setText(mate.getNombre());
          jTAño.setText(mate.getAnio()+"");
          jREstado.setSelected(mate.isEstado());
+         
          if(jTCodigo!=null){
              System.out.println( "Materia encontrada");
             }
         } catch (NumberFormatException ex) {
             JOptionPane.showMessageDialog(null,"Usted debe ingresar un codigo ID para buscar");
+        }catch(NullPointerException ex1){
+            JOptionPane.showMessageDialog(null,"El ID ingresado no contiene una materia");
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
@@ -190,10 +194,19 @@ try{
         String nombreMate=jTNombre.getText();
         int anio=Integer.parseInt(jTAño.getText());
         Boolean estado=jREstado.isSelected();
+        
         MateriaData nuevaMate=new MateriaData();
         Materia materia= new Materia(nombreMate, anio, estado);
+
         nuevaMate.guardarMateria(materia);
         
+      
+        if((jTNombre!=null )&& (jTAño!=null )&& jREstado.isSelected()){
+            nuevaMate.guardarMateria(materia);
+        }
+        }catch(NumberFormatException ex){
+        JOptionPane.showMessageDialog(null, "Debe llenar todos los campos");
+        }
     }//GEN-LAST:event_jBAgregarActionPerformed
 
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
@@ -207,7 +220,11 @@ try{
     }//GEN-LAST:event_jBModificarActionPerformed
 
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
+
         // TODO add your handling code here:
+    
+    dispose();
+    
     }//GEN-LAST:event_jBSalirActionPerformed
 
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
