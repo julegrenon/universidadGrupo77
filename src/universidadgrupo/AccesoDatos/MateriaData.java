@@ -62,7 +62,7 @@ public class MateriaData {
                 materia.setEstado(true);
                 
             }else {
-            JOptionPane.showMessageDialog(null, "No existe esa materia con ese ID");
+            JOptionPane.showMessageDialog(null, "No existe materia con ese ID");
             }
             ps.close();
         } catch (SQLException ex) {
@@ -129,4 +129,26 @@ public class MateriaData {
        return materias;
     }
 
+    public List<Materia> listarMaterias (){
+        String sql="SELECT idMateria, nombre, año, estado FROM materia WHERE estado=1";
+        ArrayList<Materia> materiasLista=new ArrayList();
+        try {
+            PreparedStatement ps=con.prepareStatement(sql);
+            ResultSet rs=ps.executeQuery();
+            
+            while (rs.next()){
+                Materia materia=new Materia();
+                materia.setIdMateria(rs.getInt("idMateria"));
+                materia.setNombre(rs.getString("nombre"));
+                materia.setAnio(rs.getInt("año"));
+                materia.setEstado(true);
+              
+                materiasLista.add(materia);
+            } 
+            ps.close();
+        } catch (SQLException ex) {
+            JOptionPane.showMessageDialog(null, "Error al acceder a la tabla materia");
+        }
+        return materiasLista;
+    }
 }
