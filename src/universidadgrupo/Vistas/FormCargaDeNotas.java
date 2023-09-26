@@ -5,6 +5,7 @@
  */
 package universidadgrupo.Vistas;
 
+import java.awt.event.ActionListener;
 import java.util.List;
 import javax.swing.table.DefaultTableModel;
 import universidadgrupo.AccesoDatos.AlumnoData;
@@ -13,12 +14,14 @@ import universidadgrupo.AccesoDatos.MateriaData;
 import universidadgrupo.entidades.Alumno;
 import universidadgrupo.entidades.Inscripcion;
 import universidadgrupo.entidades.Materia;
+import java.awt.event.ActionListener;
 
 /**
  *
  * @author sonia
  */
 public class FormCargaDeNotas extends javax.swing.JInternalFrame {
+    
 
     private DefaultTableModel modelo = new DefaultTableModel() {
 
@@ -83,7 +86,11 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
             }
         });
 
-        jComboBoxAlumnos.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "..." }));
+        jComboBoxAlumnos.addItemListener(new java.awt.event.ItemListener() {
+            public void itemStateChanged(java.awt.event.ItemEvent evt) {
+                jComboBoxAlumnosItemStateChanged(evt);
+            }
+        });
         jComboBoxAlumnos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jComboBoxAlumnosActionPerformed(evt);
@@ -140,14 +147,19 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jComboBoxAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAlumnosActionPerformed
-        
+      cargarTablaVacia();
+        cargarTabla();
     }//GEN-LAST:event_jComboBoxAlumnosActionPerformed
 
+    private void jComboBoxAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxAlumnosItemStateChanged
+        
+    }//GEN-LAST:event_jComboBoxAlumnosItemStateChanged
+    
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jButtonGuardar;
     private javax.swing.JButton jButtonSalir;
-    private javax.swing.JComboBox<String> jComboBoxAlumnos;
+    private javax.swing.JComboBox<Alumno> jComboBoxAlumnos;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JScrollPane jScrollPane1;
@@ -160,7 +172,7 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
         List<Alumno> nombres = alumnoData.listarAlumnos();
         for (Alumno nombre : nombres) {
 
-            jComboBoxAlumnos.addItem(nombre.toString());
+            jComboBoxAlumnos.addItem(nombre);
 
         }
     }
@@ -173,30 +185,41 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
         jTableListaAlumnos.setModel(modelo);
     }
 
-    private Alumno obtenerAlumnoSeleccionado() {
-        int indiceSeleccionado = jComboBoxAlumnos.getSelectedIndex();
-        if (indiceSeleccionado != -1) {
-            return alumnoData.listarAlumnos().get(indiceSeleccionado);
-        }
+     private Alumno obtenerAlumnoSeleccionado() {
+        
+       
         return null;
     }
 
     private void cargarTabla() {
 
         modelo.setRowCount(0);
-        Alumno alumnoSeleccionado = obtenerAlumnoSeleccionado();
+        Alumno alumnoSeleccionado = (Alumno) jComboBoxAlumnos.getSelectedItem();
+       // Inscripcion inscripcionSeleccionada=(Inscripcion) inscripcionData.obtenerInscripcionesPorAlumno(alumnoSeleccionado.getIdAlumno());
+        //Alumno alumnoSeleccionado = (Alumno)jComboBoxAlumnos.getSelectedItem();
+        //String alumnoSeleccionado = jComboBoxAlumnos.getSelectedItem().toString();
 
         if (alumnoSeleccionado != null) {
 
-            List<Inscripcion> nombres = inscripcionData.obtenerInscripcionesPorAlumno(alumnoSeleccionado.getIdAlumno());
-            for (Inscripcion nombre : nombres) {
-                if (nombre != null) {
+            List<Inscripcion> inscripciones = inscripcionData.obtenerInscripcionesPorAlumno(alumnoSeleccionado.getIdAlumno());
+            for (Inscripcion inscripcion : inscripciones) {
+                
                     modelo.addRow(new Object[]{
-                        nombre.getMateria().getIdMateria(), nombre.getMateria().getNombre(), nombre.getNota()
+                        inscripcion.getMateria().getIdMateria(), inscripcion.getMateria().getNombre(), inscripcion.getNota()
                     });
-                }
+                
             }
         }
     }
+    
+       private void cargarTablaVacia(){
+        while (modelo.getRowCount() > 0) {
+            modelo.removeRow(0);
+        }
+    }
+       
+       
+       
+ 
 
 }
