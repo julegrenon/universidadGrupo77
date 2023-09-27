@@ -253,8 +253,8 @@ try{
         int idMat = Integer.parseInt(jTCodigo.getText());
          Materia mate = matData.buscarMateria(idMat);
        
-try{
-         
+
+try{         
          jTNombre.setText(mate.getNombre());
          jTAño.setText(mate.getAnio()+"");
          jREstado.setSelected(mate.isEstado());
@@ -278,14 +278,12 @@ try{
            
              materiaActual=new Materia(nombreNuevo, 0, true);
              matData.guardarMateria(materiaActual);
-             
-         }catch(NullPointerException ex){
-                 
-                 JOptionPane.showMessageDialog(this, " Debe ingresar un codigo ID válido");
-             }
-         }
-}
-         
+         } 
+         } catch(NullPointerException ex){
+            JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
+        }
+
+} 
     }//GEN-LAST:event_jBModificarActionPerformed
 //=======================================================================
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
