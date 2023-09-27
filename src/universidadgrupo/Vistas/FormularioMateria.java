@@ -253,7 +253,7 @@ try{
         int idMat = Integer.parseInt(jTCodigo.getText());
          Materia mate = matData.buscarMateria(idMat);
        
-
+try{
          
          jTNombre.setText(mate.getNombre());
          jTAño.setText(mate.getAnio()+"");
@@ -276,36 +276,16 @@ try{
              estado=true;         
     } else {
            
-             Materia matModif=new Materia(matData.);
-             matModif.modificarMateria();
-             try{
-                 
-           
-         
-                 
-                     JOptionPane.showMessageDialog(null,"Complete los campos a modificar");
-                 }
-                 
-                 
-                 Boolean estado= jREstado.isSelected();
-                 
-                 if(materiaActual==null){
-                     materiaActual=new Materia(nombreNuevo, 0, true);
-                     matData.guardarMateria(materiaActual);
-                     
-                 }else{
-                     
-                     materiaActual.getNombre();
-                     materiaActual.getAnio();
-                     matData.modificarMateria(materiaActual);
-                 }
-                 
-             }catch(NumberFormatException nfe){
+             materiaActual=new Materia(nombreNuevo, 0, true);
+             matData.guardarMateria(materiaActual);
+             
+         }catch(NullPointerException ex){
                  
                  JOptionPane.showMessageDialog(this, " Debe ingresar un codigo ID válido");
              }
          }
-
+}
+         
     }//GEN-LAST:event_jBModificarActionPerformed
 //=======================================================================
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
