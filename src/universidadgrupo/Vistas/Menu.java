@@ -96,23 +96,18 @@ public class Menu extends javax.swing.JFrame {
         jMenuAdmin.add(jMenuItemManejoInsc);
 
         jMenuItemManipNotas.setText("Manipulación de notas");
+        jMenuItemManipNotas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemManipNotasActionPerformed(evt);
+            }
+        });
         jMenuAdmin.add(jMenuItemManipNotas);
 
         jMenuBar1.add(jMenuAdmin);
 
         jMenuConsultas.setText("Consultas");
-        jMenuConsultas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuConsultasActionPerformed(evt);
-            }
-        });
 
         jMenuItemAlumnoXMat.setText("Alumnos por materia");
-        jMenuItemAlumnoXMat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlumnoXMatActionPerformed(evt);
-            }
-        });
         jMenuConsultas.add(jMenuItemAlumnoXMat);
 
         jMenuBar1.add(jMenuConsultas);
@@ -168,19 +163,14 @@ public class Menu extends javax.swing.JFrame {
         Escritorio.moveToFront(fi);
     }//GEN-LAST:event_jMenuItemManejoInscActionPerformed
 
-    private void jMenuConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultasActionPerformed
-   
-    }//GEN-LAST:event_jMenuConsultasActionPerformed
-
-    private void jMenuItemAlumnoXMatActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemAlumnoXMatActionPerformed
-      
+    private void jMenuItemManipNotasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItemManipNotasActionPerformed
         Escritorio.removeAll();
-        Escritorio.repaint();
-        FormListadoAlumnosXMateria laxm = new FormListadoAlumnosXMateria();
-        laxm.setVisible(true);
-        Escritorio.add(laxm);
-        Escritorio.moveToFront(laxm);
-    }//GEN-LAST:event_jMenuItemAlumnoXMatActionPerformed
+       Escritorio.repaint();
+       FormCargaDeNotas fc= new FormCargaDeNotas();
+       fc.setVisible(true);
+       Escritorio. add(fc);
+       Escritorio.moveToFront(fc);
+    }//GEN-LAST:event_jMenuItemManipNotasActionPerformed
 
     /**
      * @param args the command line arguments
