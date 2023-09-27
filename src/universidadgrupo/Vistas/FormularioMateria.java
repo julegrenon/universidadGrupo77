@@ -254,36 +254,37 @@ try{
          Materia mate = matData.buscarMateria(idMat);
        
 
-try{         
-         jTNombre.setText(mate.getNombre());
-         jTAño.setText(mate.getAnio()+"");
-         jREstado.setSelected(mate.isEstado());
-         if(jTCodigo!=null){
-             System.out.println( "Materia encontrada");
-             JOptionPane.showMessageDialog(this,"Puede modificar los datos de la Materia");
-             
-        String nombreNuevo=jTNombre.getText();
-         if(nombreNuevo.isEmpty()){
-         JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
-        }
-            String anioNuevo= jTAño.getText();
-            Integer.parseInt(anioNuevo);
-         if( jTAño.getText()==null){
-        JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
-        }
-         boolean estado;
-         if(jREstado.isSelected()){
-             estado=true;         
-    } else {
-           
-             materiaActual=new Materia(nombreNuevo, 0, true);
-             matData.guardarMateria(materiaActual);
-         } 
-         } catch(NullPointerException ex){
+        try {
+            jTNombre.setText(mate.getNombre());
+            jTAño.setText(mate.getAnio() + "");
+            jREstado.setSelected(mate.isEstado());
+            if (jTCodigo != null) {
+                System.out.println("Materia encontrada");
+                JOptionPane.showMessageDialog(this, "Puede modificar los datos de la Materia");
+
+                String nombreNuevo = jTNombre.getText();
+                if (nombreNuevo.isEmpty()) {
+                    JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
+                }
+                String anioNuevo = jTAño.getText();
+                Integer.parseInt(anioNuevo);
+                if (jTAño.getText() == null) {
+                    JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
+                }
+                boolean estado;
+                if (jREstado.isSelected()) {
+                    estado = true;
+                } else {
+
+                    materiaActual = new Materia(nombreNuevo, 0, true);
+                    matData.guardarMateria(materiaActual);
+                }
+            }
+        } catch (NullPointerException ex) {
             JOptionPane.showMessageDialog(null, "Debe completar todos los campos");
         }
 
-} 
+
     }//GEN-LAST:event_jBModificarActionPerformed
 //=======================================================================
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
