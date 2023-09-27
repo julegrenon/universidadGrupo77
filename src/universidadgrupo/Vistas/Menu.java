@@ -41,7 +41,6 @@ public class Menu extends javax.swing.JFrame {
         jMenuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
-        setPreferredSize(new java.awt.Dimension(700, 600));
 
         Escritorio.setPreferredSize(new java.awt.Dimension(380, 290));
 
@@ -108,6 +107,11 @@ public class Menu extends javax.swing.JFrame {
         jMenuConsultas.setText("Consultas");
 
         jMenuItemAlumnoXMat.setText("Alumnos por materia");
+        jMenuItemAlumnoXMat.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItemAlumnoXMatActionPerformed(evt);
+            }
+        });
         jMenuConsultas.add(jMenuItemAlumnoXMat);
 
         jMenuBar1.add(jMenuConsultas);
