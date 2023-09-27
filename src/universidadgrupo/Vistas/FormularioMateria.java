@@ -253,6 +253,8 @@ try{
         int idMat = Integer.parseInt(jTCodigo.getText());
          Materia mate = matData.buscarMateria(idMat);
        
+
+         
          jTNombre.setText(mate.getNombre());
          jTAño.setText(mate.getAnio()+"");
          jREstado.setSelected(mate.isEstado());
@@ -269,19 +271,17 @@ try{
          if( jTAño.getText()==null){
         JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
         }
-         
-         if(jREstado!=){
-             return true;
-         }
+         boolean estado;
+         if(jREstado.isSelected()){
+             estado=true;         
     } else {
-             Materia matModif=new Materia(nombreNuevo, anioNuevo,true);
+           
+             Materia matModif=new Materia(matData.);
+             matModif.modificarMateria();
              try{
-                 matData.modificarMateria(matModif);
-                 if(nombreNuevo.isEmpty()){
-                     
-                 }
-             } catch (NullPointerException ex) {
-                 if(nombreNuevo.isEmpty()){
+                 
+           
+         
                  
                      JOptionPane.showMessageDialog(null,"Complete los campos a modificar");
                  }
