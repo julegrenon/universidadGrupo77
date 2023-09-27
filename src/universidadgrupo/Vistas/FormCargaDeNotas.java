@@ -27,10 +27,10 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo = new DefaultTableModel() {
 
         public boolean isCellEditable(int f, int c) {
-            if (c<2){
-                return false;
+            if (c==2){
+                return true;
             }
-            return true;
+            return false;
         }
 
     };
