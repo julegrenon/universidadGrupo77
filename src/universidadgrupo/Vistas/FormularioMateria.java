@@ -9,11 +9,17 @@ import universidadgrupo.AccesoDatos.MateriaData;
 import universidadgrupo.entidades.Materia;
 
 public class FormularioMateria extends javax.swing.JInternalFrame {
-
-    private MateriaData matData;
+  
+    private MateriaData matData= new MateriaData();
+    private Materia materiaActual= null;
+  
+    
+    
+    
     public FormularioMateria() {
         initComponents();
         this.matData = new MateriaData();
+    
     }
     @SuppressWarnings("unchecked")
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
@@ -166,7 +172,8 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
-
+//====================================================================
+//BUSCAR
     private void jBBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBBuscarActionPerformed
   
 try{
@@ -184,38 +191,133 @@ try{
         }
     }//GEN-LAST:event_jBBuscarActionPerformed
 
-    
+  //=====================================================================   
+  //AGREGAR
     private void jBAgregarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBAgregarActionPerformed
      
-        String nombreMate=jTNombre.getText();
+     /*   String nombreMate=jTNombre.getText();
         int anio=Integer.parseInt(jTAño.getText());
         Boolean estado=jREstado.isSelected();
         MateriaData nuevaMate=new MateriaData();
         Materia materia= new Materia(nombreMate, anio, estado);
         nuevaMate.guardarMateria(materia);
+        */
+      try{
+       // Integer idMat= Integer.parseInt(jTCodigo.getSelectedText());
+        String nombre= jTNombre.getText();
+        Integer anio= Integer.parseInt(jTAño.getText());
         
+        if(nombre.isEmpty()){
+         JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
+         return;
+        }
+        Boolean estado= jREstado.isSelected();
+           
+        if(materiaActual==null){          
+            materiaActual=new Materia(nombre, 0, true);
+       matData.guardarMateria(materiaActual);
+        
+        }else{
+        
+            materiaActual.getNombre();
+            materiaActual.getAnio();
+           matData.modificarMateria(materiaActual);
+        }
+        
+       }catch(NumberFormatException nfe){
+        
+            JOptionPane.showMessageDialog(this, " Debe ingresar un codigo ID válido");
+        }      
+    
+     
     }//GEN-LAST:event_jBAgregarActionPerformed
-
+  //=====================================================================
+  //  ELIMINAR
     private void jBEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBEliminarActionPerformed
   
-        
+         if(materiaActual!=null){
+           
+            matData.eliminarMateria(materiaActual.getIdMateria());
+            materiaActual=null;
+            limpiarCampos();
+            
+        }else{
+             JOptionPane.showMessageDialog(this, "No hay materia seleccionada");
+        }       
         
     }//GEN-LAST:event_jBEliminarActionPerformed
-
+//=======================================================================
     private void jBModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBModificarActionPerformed
-        // TODO add your handling code here:
+         materiaActual=null;
+
+        int idMat = Integer.parseInt(jTCodigo.getText());
+         Materia mate = matData.buscarMateria(idMat);
+       
+         jTNombre.setText(mate.getNombre());
+         jTAño.setText(mate.getAnio()+"");
+         jREstado.setSelected(mate.isEstado());
+         if(jTCodigo!=null){
+             System.out.println( "Materia encontrada");
+             JOptionPane.showMessageDialog(this,"Puede modificar los datos de la Materia");
+             
+        String nombreNuevo=jTNombre.getText();
+         if(nombreNuevo.isEmpty()){
+         JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
+        }
+            String anioNuevo= jTAño.getText();
+            Integer.parseInt(anioNuevo);
+         if( jTAño.getText()==null){
+        JOptionPane.showMessageDialog(this, "No puede haber campos vacios");
+        }
+         
+         if(jREstado!=){
+             return true;
+         }
+    } else {
+             Materia matModif=new Materia(nombreNuevo, anioNuevo,true);
+             try{
+                 matData.modificarMateria(matModif);
+                 if(nombreNuevo.isEmpty()){
+                     
+                 }
+             } catch (NullPointerException ex) {
+                 if(nombreNuevo.isEmpty()){
+                 
+                     JOptionPane.showMessageDialog(null,"Complete los campos a modificar");
+                 }
+                 
+                 
+                 Boolean estado= jREstado.isSelected();
+                 
+                 if(materiaActual==null){
+                     materiaActual=new Materia(nombreNuevo, 0, true);
+                     matData.guardarMateria(materiaActual);
+                     
+                 }else{
+                     
+                     materiaActual.getNombre();
+                     materiaActual.getAnio();
+                     matData.modificarMateria(materiaActual);
+                 }
+                 
+             }catch(NumberFormatException nfe){
+                 
+                 JOptionPane.showMessageDialog(this, " Debe ingresar un codigo ID válido");
+             }
+         }
+
     }//GEN-LAST:event_jBModificarActionPerformed
-
+//=======================================================================
     private void jBSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBSalirActionPerformed
-        // TODO add your handling code here:
+      dispose();  
+       
     }//GEN-LAST:event_jBSalirActionPerformed
-
+//=======================================================================
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
-     
-         jTCodigo.setText("");
-         jTNombre.setText("");
-         jTAño.setText("");
-         jREstado.setSelected(false);
+      limpiarCampos();
+        materiaActual=null;
+                   
+      
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -235,4 +337,25 @@ try{
     private javax.swing.JTextField jTCodigo;
     private javax.swing.JTextField jTNombre;
     // End of variables declaration//GEN-END:variables
+
+    private void limpiarCampos(){
+
+      jTCodigo.setText(" ");
+      jTNombre.setText(" ");
+      jTAño.setText(" ");
+      jREstado.setSelected(true);
+}
+    
+    
+  private void estadoTrue(){
+        boolean estado;              
+          if(jREstado.isSelected()){
+              estado=true;
+      }else{          
+          }
+       
+      
+  
+  }
+
 }
