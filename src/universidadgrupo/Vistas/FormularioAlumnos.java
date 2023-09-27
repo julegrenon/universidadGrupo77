@@ -193,7 +193,7 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
                         .addComponent(jDateFechaNac, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
                         .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                         .addComponent(jRadioButtonEstado)))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 61, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jButtonAgregar)
                     .addComponent(jButtonEliminar)
@@ -276,7 +276,6 @@ public class FormularioAlumnos extends javax.swing.JInternalFrame {
             if (alumnoEncontrado.isEstado()) {
                 jTextFieldNombre.setText(alumnoEncontrado.getNombre());
                 jTextFieldApellido.setText(alumnoEncontrado.getApellido());
-
                 ZoneId defaultZoneId = ZoneId.systemDefault();
 
                 //crea instancia localDate para guardar la fecha

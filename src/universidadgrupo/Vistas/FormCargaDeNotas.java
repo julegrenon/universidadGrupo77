@@ -15,6 +15,7 @@ import universidadgrupo.entidades.Alumno;
 import universidadgrupo.entidades.Inscripcion;
 import universidadgrupo.entidades.Materia;
 import java.awt.event.ActionListener;
+import javax.swing.JOptionPane;
 
 /**
  *
@@ -26,7 +27,10 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo = new DefaultTableModel() {
 
         public boolean isCellEditable(int f, int c) {
-            return false;
+            if (c<2){
+                return false;
+            }
+            return true;
         }
 
     };
@@ -75,9 +79,19 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
+        jTableListaAlumnos.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jTableListaAlumnosMouseClicked(evt);
+            }
+        });
         jScrollPane1.setViewportView(jTableListaAlumnos);
 
         jButtonGuardar.setText("Guardar");
+        jButtonGuardar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jButtonGuardarActionPerformed(evt);
+            }
+        });
 
         jButtonSalir.setText("Salir");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
@@ -147,13 +161,46 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jButtonSalirActionPerformed
 
     private void jComboBoxAlumnosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jComboBoxAlumnosActionPerformed
-      cargarTablaVacia();
+        cargarTablaVacia();
         cargarTabla();
     }//GEN-LAST:event_jComboBoxAlumnosActionPerformed
 
     private void jComboBoxAlumnosItemStateChanged(java.awt.event.ItemEvent evt) {//GEN-FIRST:event_jComboBoxAlumnosItemStateChanged
         
     }//GEN-LAST:event_jComboBoxAlumnosItemStateChanged
+
+    private void jTableListaAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListaAlumnosMouseClicked
+       
+          /* int filaSeleccionada = jTableListaAlumnos.getSelectedRow();
+           //int columnaSeleccionada= jTableListaAlumnos.getSelectedColumn();
+        
+        if (filaSeleccionada != -1) {
+            double nota = (double) jTableListaAlumnos.getValueAt(filaSeleccionada, 2);
+             
+        }*/
+           
+          // inscripcionData.actualizarNota(alumnoSeleccionado.getIdAlumno(),idMat, nota);
+       
+    }//GEN-LAST:event_jTableListaAlumnosMouseClicked
+
+    private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
+ 
+        try {
+            int filaSeleccionada = jTableListaAlumnos.getSelectedRow();
+
+            Alumno alumnoSeleccionado = (Alumno) jComboBoxAlumnos.getSelectedItem();
+            int idMat = (Integer) jTableListaAlumnos.getValueAt(filaSeleccionada, 0);
+            String not = (String) jTableListaAlumnos.getValueAt(filaSeleccionada, 2);
+            double nota = Double.parseDouble(not);
+
+            inscripcionData.actualizarNota(alumnoSeleccionado.getIdAlumno(), idMat, nota);
+        } catch (NullPointerException ex) {
+            JOptionPane.showMessageDialog(null, "No puede haber campos vacíos");
+        } catch (NumberFormatException ex2) {
+            JOptionPane.showMessageDialog(null, "Formato de nota incorrecto");
+        }
+
+    }//GEN-LAST:event_jButtonGuardarActionPerformed
     
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -166,6 +213,7 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
     private javax.swing.JTable jTableListaAlumnos;
     // End of variables declaration//GEN-END:variables
 
+    //METODOS
     
     //llenar combo box lista alumnos
     private void llenarComboBox() {
@@ -176,7 +224,7 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
 
         }
     }
-    
+
     //setea nombre de columnas
     private void cargarColumnas() {
         modelo.addColumn("Código");
@@ -185,9 +233,8 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
         jTableListaAlumnos.setModel(modelo);
     }
 
-     private Alumno obtenerAlumnoSeleccionado() {
-        
-       
+    private Alumno obtenerAlumnoSeleccionado() {
+
         return null;
     }
 
@@ -195,7 +242,7 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
 
         modelo.setRowCount(0);
         Alumno alumnoSeleccionado = (Alumno) jComboBoxAlumnos.getSelectedItem();
-       // Inscripcion inscripcionSeleccionada=(Inscripcion) inscripcionData.obtenerInscripcionesPorAlumno(alumnoSeleccionado.getIdAlumno());
+        // Inscripcion inscripcionSeleccionada=(Inscripcion) inscripcionData.obtenerInscripcionesPorAlumno(alumnoSeleccionado.getIdAlumno());
         //Alumno alumnoSeleccionado = (Alumno)jComboBoxAlumnos.getSelectedItem();
         //String alumnoSeleccionado = jComboBoxAlumnos.getSelectedItem().toString();
 
@@ -203,23 +250,19 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
 
             List<Inscripcion> inscripciones = inscripcionData.obtenerInscripcionesPorAlumno(alumnoSeleccionado.getIdAlumno());
             for (Inscripcion inscripcion : inscripciones) {
-                
-                    modelo.addRow(new Object[]{
-                        inscripcion.getMateria().getIdMateria(), inscripcion.getMateria().getNombre(), inscripcion.getNota()
-                    });
-                
+
+                modelo.addRow(new Object[]{
+                    inscripcion.getMateria().getIdMateria(), inscripcion.getMateria().getNombre(), inscripcion.getNota()
+                });
+
             }
         }
     }
-    
-       private void cargarTablaVacia(){
+
+    private void cargarTablaVacia() {
         while (modelo.getRowCount() > 0) {
             modelo.removeRow(0);
         }
     }
-       
-       
-       
- 
 
 }
