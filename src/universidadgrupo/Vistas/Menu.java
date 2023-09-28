@@ -8,21 +8,23 @@ package universidadgrupo.Vistas;
 import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
+import java.awt.event.WindowAdapter;
+import java.awt.event.WindowEvent;
+import static java.lang.System.exit;
 import javax.swing.ImageIcon;
 import javax.swing.JDesktopPane;
+import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 
-/**
- *
- * @author sonia
- */
 public class Menu extends javax.swing.JFrame {
 
-    //FondoPanel fondo= new FondoPanel();
+    
+ //  FondoPanel fondo= new FondoPanel();
    
     public Menu() {
         
-      //  this.setContentPane(fondo);
+  //     this.setContentPane(fondo);
+  //    setResizable(false);
         
         initComponents();
     }
@@ -48,6 +50,7 @@ public class Menu extends javax.swing.JFrame {
         jMenu1 = new javax.swing.JMenu();
         jMenuItem1 = new javax.swing.JMenuItem();
         jMenuSalir = new javax.swing.JMenu();
+        jMenuItem3 = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -57,11 +60,11 @@ public class Menu extends javax.swing.JFrame {
         Escritorio.setLayout(EscritorioLayout);
         EscritorioLayout.setHorizontalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 400, Short.MAX_VALUE)
+            .addGap(0, 655, Short.MAX_VALUE)
         );
         EscritorioLayout.setVerticalGroup(
             EscritorioLayout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addGap(0, 279, Short.MAX_VALUE)
+            .addGap(0, 518, Short.MAX_VALUE)
         );
 
         jMenuAlumnos.setText("Alumnos");
@@ -131,6 +134,16 @@ public class Menu extends javax.swing.JFrame {
                 jMenuSalirActionPerformed(evt);
             }
         });
+
+        jMenuItem3.setAccelerator(javax.swing.KeyStroke.getKeyStroke(java.awt.event.KeyEvent.VK_S, java.awt.event.InputEvent.SHIFT_MASK));
+        jMenuItem3.setText("Salir");
+        jMenuItem3.addMouseListener(new java.awt.event.MouseAdapter() {
+            public void mouseClicked(java.awt.event.MouseEvent evt) {
+                jMenuItem3MouseClicked(evt);
+            }
+        });
+        jMenuSalir.add(jMenuItem3);
+
         jMenuBar1.add(jMenuSalir);
 
         setJMenuBar(jMenuBar1);
@@ -139,11 +152,11 @@ public class Menu extends javax.swing.JFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 400, Short.MAX_VALUE)
+            .addComponent(Escritorio, javax.swing.GroupLayout.DEFAULT_SIZE, 655, Short.MAX_VALUE)
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(Escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 279, Short.MAX_VALUE)
+            .addComponent(Escritorio, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, 518, Short.MAX_VALUE)
         );
 
         pack();
@@ -200,8 +213,21 @@ public class Menu extends javax.swing.JFrame {
     }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     private void jMenuSalirActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuSalirActionPerformed
-       dispose();
+   setDefaultCloseOperation(EXIT_ON_CLOSE);
+
     }//GEN-LAST:event_jMenuSalirActionPerformed
+
+    private void jMenuItem3MouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jMenuItem3MouseClicked
+     
+   this.addWindowListener(new WindowAdapter(){
+                public void windowClosing(WindowEvent e){
+                    int i=JOptionPane.showConfirmDialog(null, "Seguro que quiere salir?");
+                    if(i==0)
+                        System.exit(WIDTH);//cierra aplicacion
+                }
+            });
+
+    }//GEN-LAST:event_jMenuItem3MouseClicked
 
     /**
      * @param args the command line arguments
@@ -245,6 +271,7 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuAlumnos;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenuItem jMenuItem1;
+    private javax.swing.JMenuItem jMenuItem3;
     private javax.swing.JMenuItem jMenuItemFormAlum;
     private javax.swing.JMenuItem jMenuItemFormMat;
     private javax.swing.JMenuItem jMenuItemManejoInsc;
@@ -252,21 +279,26 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuMateria;
     private javax.swing.JMenu jMenuSalir;
     // End of variables declaration//GEN-END:variables
-/*
+
+    
+    
+    
+    /*
 class FondoPanel extends JPanel{
 
     private Image imagen;
     
     public void paint(Graphics g){
     
-        imagen= new ImageIcon(getClass().getResource("/Imagenes/Univ Grupo 77")).getImage();
+        imagen= new ImageIcon(getClass().getResource("Univ Grupo 77.png")).getImage();
   
-         g.drawImage(imagen,0, 0, imagen.getWidth(this),imagen.getHeight(this), this);
+         g.drawImage(imagen, 0, 0, getWidth(), getHeight(), this);
       
         setOpaque(false);
         
         super.paint(g);
       }
 
-  }*/
+  }
+*/
 }
