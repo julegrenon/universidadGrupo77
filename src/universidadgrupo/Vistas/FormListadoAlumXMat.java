@@ -41,6 +41,7 @@ public class FormListadoAlumXMat extends javax.swing.JInternalFrame {
     public FormListadoAlumXMat(){
         initComponents();
         cargarComboBox();
+        cargarColumnas();
     }/**
      * This method is called from within the constructor to initialize the form.
      * WARNING: Do NOT modify this code. The content of this method is always
@@ -137,7 +138,6 @@ public class FormListadoAlumXMat extends javax.swing.JInternalFrame {
     private void jCBListaMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBListaMateriasActionPerformed
         cargarTablaVacia();
         cargarTabla();
-        cargarColumnas();
     }//GEN-LAST:event_jCBListaMateriasActionPerformed
 
 
@@ -162,7 +162,7 @@ public class FormListadoAlumXMat extends javax.swing.JInternalFrame {
     private void cargarComboBox() {
         jCBListaMaterias.removeAllItems();
 
-        ArrayList<Materia> materias = (ArrayList<Materia>) materiaData.listarMateria();
+        List<Materia> materias = materiaData.listarMateria();
         for (Materia mat : materias) {
 
             jCBListaMaterias.addItem(mat);
@@ -185,13 +185,12 @@ public class FormListadoAlumXMat extends javax.swing.JInternalFrame {
 
         if (materiaSeleccionada != null) {
 
-            List<Inscripcion> inscripciones = inscripcionData.obtenerInscripciones();
-            for (Inscripcion inscripcion : inscripciones) {
-                if (idMateria == inscripcion.getMateria().getIdMateria()) {
-                    modelo.addRow(new Object[]{
-                        inscripcion.getAlumno().getIdAlumno(), inscripcion.getAlumno().getDni(), inscripcion.getAlumno().getApellido(), inscripcion.getAlumno().getNombre()
-                    });
-                }
+            List<Alumno> alumnos = inscripcionData.obtenerAlumnosPorMateria(idMateria);
+            for (Alumno alumno : alumnos) {
+
+                modelo.addRow(new Object[]{
+                    alumno.getIdAlumno(), alumno.getDni(), alumno.getApellido(), alumno.getNombre()
+                });
             }
         }
     }
