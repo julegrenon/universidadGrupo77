@@ -60,21 +60,15 @@
             </MenuItem>
           </SubComponents>
         </Menu>
-        <Menu class="javax.swing.JMenu" name="jMenuConsultas">
+        <Menu class="javax.swing.JMenu" name="jMenu1">
           <Properties>
             <Property name="text" type="java.lang.String" value="Consultas"/>
           </Properties>
-          <Events>
-            <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuConsultasActionPerformed"/>
-          </Events>
           <SubComponents>
-            <MenuItem class="javax.swing.JMenuItem" name="jMenuItemAlumnoXMat">
+            <MenuItem class="javax.swing.JMenuItem" name="jMenuItem1">
               <Properties>
-                <Property name="text" type="java.lang.String" value="Alumnos por materia"/>
+                <Property name="text" type="java.lang.String" value="jMenuItemAlumnosPorMat"/>
               </Properties>
-              <Events>
-                <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="jMenuItemAlumnoXMatActionPerformed"/>
-              </Events>
             </MenuItem>
           </SubComponents>
         </Menu>
@@ -126,7 +120,7 @@
         </Property>
       </Properties>
       <AuxValues>
-        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="FondoPanel"/>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="new javax.swing.JDesktopPane();"/>
       </AuxValues>
 
       <Layout>

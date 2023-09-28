@@ -9,6 +9,7 @@ import java.awt.Graphics;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import javax.swing.ImageIcon;
+import javax.swing.JDesktopPane;
 import javax.swing.JPanel;
 
 /**
@@ -16,7 +17,7 @@ import javax.swing.JPanel;
  * @author sonia
  */
 public class Menu extends javax.swing.JFrame {
-FondoPanel fondo= new FondoPanel();
+//FondoPanel fondo= new FondoPanel();
     /**
      * Creates new form Menu
      */
@@ -33,7 +34,7 @@ FondoPanel fondo= new FondoPanel();
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Escritorio = FondoPanel;
+        Escritorio = new javax.swing.JDesktopPane();
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAlumnos = new javax.swing.JMenu();
         jMenuItemFormAlum = new javax.swing.JMenuItem();
@@ -42,8 +43,8 @@ FondoPanel fondo= new FondoPanel();
         jMenuAdmin = new javax.swing.JMenu();
         jMenuItemManejoInsc = new javax.swing.JMenuItem();
         jMenuItemManipNotas = new javax.swing.JMenuItem();
-        jMenuConsultas = new javax.swing.JMenu();
-        jMenuItemAlumnoXMat = new javax.swing.JMenuItem();
+        jMenu1 = new javax.swing.JMenu();
+        jMenuItem1 = new javax.swing.JMenuItem();
         jMenuSalir = new javax.swing.JMenu();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
@@ -110,22 +111,12 @@ FondoPanel fondo= new FondoPanel();
 
         jMenuBar1.add(jMenuAdmin);
 
-        jMenuConsultas.setText("Consultas");
-        jMenuConsultas.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuConsultasActionPerformed(evt);
-            }
-        });
+        jMenu1.setText("Consultas");
 
-        jMenuItemAlumnoXMat.setText("Alumnos por materia");
-        jMenuItemAlumnoXMat.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jMenuItemAlumnoXMatActionPerformed(evt);
-            }
-        });
-        jMenuConsultas.add(jMenuItemAlumnoXMat);
+        jMenuItem1.setText("jMenuItemAlumnosPorMat");
+        jMenu1.add(jMenuItem1);
 
-        jMenuBar1.add(jMenuConsultas);
+        jMenuBar1.add(jMenu1);
 
         jMenuSalir.setText("Salir");
         jMenuBar1.add(jMenuSalir);
@@ -187,17 +178,6 @@ FondoPanel fondo= new FondoPanel();
        Escritorio.moveToFront(fc);
     }//GEN-LAST:event_jMenuItemManipNotasActionPerformed
 
-    private void jMenuConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultasActionPerformed
-    
-       Escritorio.removeAll();
-       Escritorio.repaint();
-       FormListadoAlumXMat faxm= new  FormListadoAlumXMat();
-       faxm.setVisible(true);
-       Escritorio. add(faxm);
-       Escritorio.moveToFront(faxm); 
-        
-    }//GEN-LAST:event_jMenuConsultasActionPerformed
-
     /**
      * @param args the command line arguments
      */
@@ -235,11 +215,11 @@ FondoPanel fondo= new FondoPanel();
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JDesktopPane Escritorio;
+    private javax.swing.JMenu jMenu1;
     private javax.swing.JMenu jMenuAdmin;
     private javax.swing.JMenu jMenuAlumnos;
     private javax.swing.JMenuBar jMenuBar1;
-    private javax.swing.JMenu jMenuConsultas;
-    private javax.swing.JMenuItem jMenuItemAlumnoXMat;
+    private javax.swing.JMenuItem jMenuItem1;
     private javax.swing.JMenuItem jMenuItemFormAlum;
     private javax.swing.JMenuItem jMenuItemFormMat;
     private javax.swing.JMenuItem jMenuItemManejoInsc;
@@ -247,7 +227,7 @@ FondoPanel fondo= new FondoPanel();
     private javax.swing.JMenu jMenuMateria;
     private javax.swing.JMenu jMenuSalir;
     // End of variables declaration//GEN-END:variables
-
+/*
 class FondoPanel extends JPanel{
 
     private Image imagen;
@@ -263,5 +243,5 @@ class FondoPanel extends JPanel{
         super.paint(g);
       }
 
-  }
+  }*/
 }
