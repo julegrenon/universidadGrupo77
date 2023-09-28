@@ -17,11 +17,13 @@ import javax.swing.JPanel;
  * @author sonia
  */
 public class Menu extends javax.swing.JFrame {
-//FondoPanel fondo= new FondoPanel();
-    /**
-     * Creates new form Menu
-     */
+
+    //FondoPanel fondo= new FondoPanel();
+   
     public Menu() {
+        
+      //  this.setContentPane(fondo);
+        
         initComponents();
     }
 
