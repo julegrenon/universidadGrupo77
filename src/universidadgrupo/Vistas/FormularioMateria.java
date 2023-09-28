@@ -294,7 +294,8 @@ try{
 //=======================================================================
     private void jBLimpiarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBLimpiarActionPerformed
       limpiarCampos();
-        materiaActual=null;
+      materiaActual=null;
+      jREstado.setSelected(false);
                    
       
     }//GEN-LAST:event_jBLimpiarActionPerformed
