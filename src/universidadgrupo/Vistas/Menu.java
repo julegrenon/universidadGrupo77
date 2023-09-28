@@ -5,6 +5,8 @@
  */
 package universidadgrupo.Vistas;
 
+import java.awt.event.ActionEvent;
+
 /**
  *
  * @author sonia
@@ -105,6 +107,11 @@ public class Menu extends javax.swing.JFrame {
         jMenuBar1.add(jMenuAdmin);
 
         jMenuConsultas.setText("Consultas");
+        jMenuConsultas.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuConsultasActionPerformed(evt);
+            }
+        });
 
         jMenuItemAlumnoXMat.setText("Alumnos por materia");
         jMenuItemAlumnoXMat.addActionListener(new java.awt.event.ActionListener() {
@@ -175,6 +182,17 @@ public class Menu extends javax.swing.JFrame {
        Escritorio. add(fc);
        Escritorio.moveToFront(fc);
     }//GEN-LAST:event_jMenuItemManipNotasActionPerformed
+
+    private void jMenuConsultasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuConsultasActionPerformed
+    
+       Escritorio.removeAll();
+       Escritorio.repaint();
+       FormListadoAlumXMat faxm= new  FormListadoAlumXMat();
+       faxm.setVisible(true);
+       Escritorio. add(faxm);
+       Escritorio.moveToFront(faxm); 
+        
+    }//GEN-LAST:event_jMenuConsultasActionPerformed
 
     /**
      * @param args the command line arguments
