@@ -75,8 +75,8 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Lucida Sans", 1, 14)); // NOI18N
-        jLabel3.setText("Listado de Materias");
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setText("LISTADO DE MATERIAS");
 
         jTableListaMaterias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
@@ -96,7 +96,8 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
         });
         jScrollPane1.setViewportView(jTableListaMaterias);
 
-        jButtonInscribir.setText("Inscribir");
+        jButtonInscribir.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
+        jButtonInscribir.setText("INSCRIBIR");
         jButtonInscribir.setEnabled(false);
         jButtonInscribir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -104,7 +105,8 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jButtonAnular.setText("Anular inscripción");
+        jButtonAnular.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
+        jButtonAnular.setText("ANULAR INSCRIPCION");
         jButtonAnular.setEnabled(false);
         jButtonAnular.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -112,21 +114,24 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jButtonSalir.setText("Salir");
+        jButtonSalir.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
+        jButtonSalir.setText("SALIR");
         jButtonSalir.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jButtonSalirActionPerformed(evt);
             }
         });
 
-        jCheckBoxInsc.setText("Materias Inscriptas");
+        jCheckBoxInsc.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
+        jCheckBoxInsc.setText("MATERIAS INSCRIPTAS");
         jCheckBoxInsc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxInscActionPerformed(evt);
             }
         });
 
-        jCheckBoxNoInsc.setText("Materias no Inscriptas");
+        jCheckBoxNoInsc.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
+        jCheckBoxNoInsc.setText("MATERIAS NO INSCRIPTAS");
         jCheckBoxNoInsc.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
                 jCheckBoxNoInscActionPerformed(evt);
@@ -139,49 +144,51 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
+                .addComponent(jLabel2)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jComboBoxAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGap(20, 20, 20))
+            .addGroup(layout.createSequentialGroup()
+                .addGap(212, 212, 212)
+                .addComponent(jLabel3)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
+                .addComponent(jLabel1)
+                .addGap(0, 0, Short.MAX_VALUE))
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                        .addComponent(jComboBoxAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                        .addGap(20, 20, 20))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addGap(0, 43, Short.MAX_VALUE)
+                        .addGap(60, 60, 60)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING, false)
-                                    .addComponent(jScrollPane1)
-                                    .addGroup(layout.createSequentialGroup()
-                                        .addComponent(jCheckBoxInsc)
-                                        .addGap(213, 213, 213)
-                                        .addComponent(jCheckBoxNoInsc)))
-                                .addGap(20, 20, 20))
-                            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                                .addComponent(jLabel3)
-                                .addGap(206, 206, 206))
+                                .addComponent(jCheckBoxInsc)
+                                .addGap(89, 89, 89)
+                                .addComponent(jCheckBoxNoInsc)
+                                .addGap(61, 61, 61))
                             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
                                 .addComponent(jButtonInscribir)
-                                .addGap(74, 74, 74)
+                                .addGap(68, 68, 68)
                                 .addComponent(jButtonAnular)
                                 .addGap(72, 72, 72)
                                 .addComponent(jButtonSalir)
-                                .addGap(83, 83, 83))))))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(182, 182, 182)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
+                                .addGap(49, 49, 49))))
+                    .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(32, 32, 32))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addComponent(jLabel1)
-                .addGap(24, 24, 24)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(24, 24, 24))
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addComponent(jLabel3)
+                        .addGap(18, 18, 18)))
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBoxAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 17, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBoxNoInsc)
                     .addComponent(jCheckBoxInsc))
@@ -192,7 +199,7 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
                     .addComponent(jButtonInscribir)
                     .addComponent(jButtonAnular)
                     .addComponent(jButtonSalir))
-                .addGap(17, 17, 17))
+                .addGap(31, 31, 31))
         );
 
         pack();
