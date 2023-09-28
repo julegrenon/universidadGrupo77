@@ -125,6 +125,9 @@
           <Dimension value="[380, 290]"/>
         </Property>
       </Properties>
+      <AuxValues>
+        <AuxValue name="JavaCodeGenerator_CreateCodeCustom" type="java.lang.String" value="FondoPanel"/>
+      </AuxValues>
 
       <Layout>
         <DimensionLayout dim="0">

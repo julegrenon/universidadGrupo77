@@ -5,14 +5,18 @@
  */
 package universidadgrupo.Vistas;
 
+import java.awt.Graphics;
+import java.awt.Image;
 import java.awt.event.ActionEvent;
+import javax.swing.ImageIcon;
+import javax.swing.JPanel;
 
 /**
  *
  * @author sonia
  */
 public class Menu extends javax.swing.JFrame {
-
+FondoPanel fondo= new FondoPanel();
     /**
      * Creates new form Menu
      */
@@ -29,7 +33,7 @@ public class Menu extends javax.swing.JFrame {
     // <editor-fold defaultstate="collapsed" desc="Generated Code">//GEN-BEGIN:initComponents
     private void initComponents() {
 
-        Escritorio = new javax.swing.JDesktopPane();
+        Escritorio = FondoPanel;
         jMenuBar1 = new javax.swing.JMenuBar();
         jMenuAlumnos = new javax.swing.JMenu();
         jMenuItemFormAlum = new javax.swing.JMenuItem();
@@ -243,4 +247,21 @@ public class Menu extends javax.swing.JFrame {
     private javax.swing.JMenu jMenuMateria;
     private javax.swing.JMenu jMenuSalir;
     // End of variables declaration//GEN-END:variables
+
+class FondoPanel extends JPanel{
+
+    private Image imagen;
+    
+    public void paint(Graphics g){
+    
+        imagen= new ImageIcon(getClass().getResource("/Imagenes/Univ Grupo 77")).getImage();
+  
+         g.drawImage(imagen,0, 0, imagen.getWidth(this),imagen.getHeight(this), this);
+      
+        setOpaque(false);
+        
+        super.paint(g);
+      }
+
+  }
 }
