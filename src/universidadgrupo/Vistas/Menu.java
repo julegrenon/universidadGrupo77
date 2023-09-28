@@ -113,7 +113,12 @@ public class Menu extends javax.swing.JFrame {
 
         jMenu1.setText("Consultas");
 
-        jMenuItem1.setText("jMenuItemAlumnosPorMat");
+        jMenuItem1.setText("Alumnos por materia");
+        jMenuItem1.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jMenuItem1ActionPerformed(evt);
+            }
+        });
         jMenu1.add(jMenuItem1);
 
         jMenuBar1.add(jMenu1);
@@ -177,6 +182,15 @@ public class Menu extends javax.swing.JFrame {
        Escritorio. add(fc);
        Escritorio.moveToFront(fc);
     }//GEN-LAST:event_jMenuItemManipNotasActionPerformed
+
+    private void jMenuItem1ActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jMenuItem1ActionPerformed
+         Escritorio.removeAll();
+       Escritorio.repaint();
+       FormListadoAlumXMat faxm= new FormListadoAlumXMat();
+       faxm.setVisible(true);
+       Escritorio. add(faxm);
+       Escritorio.moveToFront(faxm);
+    }//GEN-LAST:event_jMenuItem1ActionPerformed
 
     /**
      * @param args the command line arguments

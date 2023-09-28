@@ -137,6 +137,7 @@ public class FormListadoAlumXMat extends javax.swing.JInternalFrame {
     private void jCBListaMateriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jCBListaMateriasActionPerformed
         cargarTablaVacia();
         cargarTabla();
+        cargarColumnas();
     }//GEN-LAST:event_jCBListaMateriasActionPerformed
 
 
