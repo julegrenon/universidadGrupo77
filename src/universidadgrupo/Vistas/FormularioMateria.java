@@ -327,15 +327,12 @@ try{
 }
     
     
-  private void estadoTrue(){
-        boolean estado;              
-          if(jREstado.isSelected()){
-              estado=true;
-      }else{          
-          }
-       
-      
-  
-  }
+    private void estadoTrue() {
+        boolean estado;
+        if (jREstado.isSelected()) {
+            estado = true;
+        } else {
+        }
+    }
 
 }

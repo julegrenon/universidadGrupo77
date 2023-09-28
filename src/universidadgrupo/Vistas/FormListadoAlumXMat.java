@@ -21,16 +21,13 @@ import universidadgrupo.entidades.Materia;
  */
 public class FormListadoAlumXMat extends javax.swing.JInternalFrame {
 
-        private DefaultTableModel modelo = new DefaultTableModel() {
+    private DefaultTableModel modelo = new DefaultTableModel() {
 
         public boolean isCellEditable(int f, int c) {
             return false;
         }
 
     };
-    
-     private  ArrayList<Materia> materias=new ArrayList <>();
-    // private ArrayList<Alumno> alumnosLista=new ArrayList();
      
      private AlumnoData alumnoData = new AlumnoData();
      private MateriaData materiaData = new MateriaData();
@@ -149,16 +146,18 @@ public class FormListadoAlumXMat extends javax.swing.JInternalFrame {
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JTable jTAlumnos;
     // End of variables declaration//GEN-END:variables
-     
-     private void armarCabecera(){
+
+    //METODOS
     
+    private void armarCabecera() {
+
         modelo.addColumn("ID");
         modelo.addColumn("DNI");
         modelo.addColumn("Apellido");
         modelo.addColumn("Nombre");
-        jTAlumnos.setModel(modelo); 
-         }
-    
+        jTAlumnos.setModel(modelo);
+    }
+
     private void cargarComboBox() {
         jCBListaMaterias.removeAllItems();
 
@@ -168,14 +167,7 @@ public class FormListadoAlumXMat extends javax.swing.JInternalFrame {
             jCBListaMaterias.addItem(mat);
         }
     }
-     /*private void llenarTabla(){
- 
-      ArrayList<Alumno> alumnosLista=(ArrayList<Alumno>) alumnoData.listarAlumnos();
-      for(Alumnos alu: alumnos){
-      
-      }
-     }*/
-     
+
     private void cargarTabla() {
 
         modelo.setRowCount(0);
@@ -194,14 +186,14 @@ public class FormListadoAlumXMat extends javax.swing.JInternalFrame {
             }
         }
     }
-    
+
     private void cargarTablaVacia() {
         while (modelo.getRowCount() > 0) {
             modelo.removeRow(0);
         }
     }
-    
-        //setea nombre de columnas
+
+    //setea nombre de columnas
     private void cargarColumnas() {
         modelo.addColumn("ID");
         modelo.addColumn("DNI");

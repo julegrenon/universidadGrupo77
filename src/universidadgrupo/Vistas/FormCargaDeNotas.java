@@ -27,12 +27,11 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
     private DefaultTableModel modelo = new DefaultTableModel() {
 
         public boolean isCellEditable(int f, int c) {
-            if (c==2){
+            if (c == 2) {
                 return true;
             }
             return false;
         }
-
     };
 
     private AlumnoData alumnoData = new AlumnoData();
@@ -42,8 +41,7 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
     public FormCargaDeNotas() {
         initComponents();
         llenarComboBox();
-        cargarColumnas();
-        
+        cargarColumnas(); 
     }
 
     /**
@@ -174,7 +172,7 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jTableListaAlumnosMouseClicked
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
- 
+
         try {
             int filaSeleccionada = jTableListaAlumnos.getSelectedRow();
 
@@ -189,7 +187,6 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
         } catch (NumberFormatException ex2) {
             JOptionPane.showMessageDialog(null, "Formato de nota incorrecto");
         }
-
     }//GEN-LAST:event_jButtonGuardarActionPerformed
     
 
@@ -204,14 +201,12 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
     // End of variables declaration//GEN-END:variables
 
     //METODOS
-    
     //llenar combo box lista alumnos
     private void llenarComboBox() {
         List<Alumno> nombres = alumnoData.listarAlumnos();
         for (Alumno nombre : nombres) {
 
             jComboBoxAlumnos.addItem(nombre);
-
         }
     }
 
@@ -221,11 +216,6 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
         modelo.addColumn("Materia");
         modelo.addColumn("Nota");
         jTableListaAlumnos.setModel(modelo);
-    }
-
-    private Alumno obtenerAlumnoSeleccionado() {
-
-        return null;
     }
 
     private void cargarTabla() {
