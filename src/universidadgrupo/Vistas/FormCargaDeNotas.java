@@ -170,17 +170,7 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_jComboBoxAlumnosItemStateChanged
 
     private void jTableListaAlumnosMouseClicked(java.awt.event.MouseEvent evt) {//GEN-FIRST:event_jTableListaAlumnosMouseClicked
-       
-          /* int filaSeleccionada = jTableListaAlumnos.getSelectedRow();
-           //int columnaSeleccionada= jTableListaAlumnos.getSelectedColumn();
-        
-        if (filaSeleccionada != -1) {
-            double nota = (double) jTableListaAlumnos.getValueAt(filaSeleccionada, 2);
-             
-        }*/
-           
-          // inscripcionData.actualizarNota(alumnoSeleccionado.getIdAlumno(),idMat, nota);
-       
+
     }//GEN-LAST:event_jTableListaAlumnosMouseClicked
 
     private void jButtonGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jButtonGuardarActionPerformed
@@ -242,9 +232,6 @@ public class FormCargaDeNotas extends javax.swing.JInternalFrame {
 
         modelo.setRowCount(0);
         Alumno alumnoSeleccionado = (Alumno) jComboBoxAlumnos.getSelectedItem();
-        // Inscripcion inscripcionSeleccionada=(Inscripcion) inscripcionData.obtenerInscripcionesPorAlumno(alumnoSeleccionado.getIdAlumno());
-        //Alumno alumnoSeleccionado = (Alumno)jComboBoxAlumnos.getSelectedItem();
-        //String alumnoSeleccionado = jComboBoxAlumnos.getSelectedItem().toString();
 
         if (alumnoSeleccionado != null) {
 
