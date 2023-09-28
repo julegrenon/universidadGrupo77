@@ -63,8 +63,8 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
         jCheckBoxInsc = new javax.swing.JCheckBox();
         jCheckBoxNoInsc = new javax.swing.JCheckBox();
 
-        jLabel1.setFont(new java.awt.Font("Lucida Sans", 1, 16)); // NOI18N
-        jLabel1.setForeground(new java.awt.Color(51, 51, 51));
+        jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel1.setForeground(new java.awt.Color(255, 255, 255));
         jLabel1.setText("Formulario de Inscripción");
 
         jLabel2.setText("Seleccione un alumno:");
@@ -75,7 +75,7 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
             }
         });
 
-        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
+        jLabel3.setFont(new java.awt.Font("Tahoma", 1, 14)); // NOI18N
         jLabel3.setText("LISTADO DE MATERIAS");
 
         jTableListaMaterias.setModel(new javax.swing.table.DefaultTableModel(
@@ -148,14 +148,8 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addComponent(jComboBoxAlumnos, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
                 .addGap(20, 20, 20))
-            .addGroup(layout.createSequentialGroup()
-                .addGap(212, 212, 212)
-                .addComponent(jLabel3)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jLabel1)
-                .addGap(0, 0, Short.MAX_VALUE))
             .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap(38, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
                         .addGap(60, 60, 60)
@@ -174,21 +168,27 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
                                 .addGap(49, 49, 49))))
                     .addComponent(jScrollPane1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.PREFERRED_SIZE, 570, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(32, 32, 32))
+            .addGroup(layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(232, 232, 232)
+                        .addComponent(jLabel3))
+                    .addGroup(layout.createSequentialGroup()
+                        .addGap(202, 202, 202)
+                        .addComponent(jLabel1)))
+                .addContainerGap(javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(24, 24, 24))
-                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(18, 18, 18)))
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(jLabel3)
+                .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jComboBoxAlumnos, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 38, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 24, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jCheckBoxNoInsc)
                     .addComponent(jCheckBoxInsc))
@@ -199,7 +199,7 @@ public class FormularioInscripciones extends javax.swing.JInternalFrame {
                     .addComponent(jButtonInscribir)
                     .addComponent(jButtonAnular)
                     .addComponent(jButtonSalir))
-                .addGap(31, 31, 31))
+                .addGap(14, 14, 14))
         );
 
         pack();
