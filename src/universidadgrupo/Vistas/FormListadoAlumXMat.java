@@ -147,9 +147,7 @@ public class FormListadoAlumXMat extends javax.swing.JInternalFrame {
      private void llenarTabla(){
  
       ArrayList<Alumno> alumnosLista=(ArrayList<Alumno>) alumnoData.listarAlumnos();
-      for(Alumnos alu: alumnos){
-      
-      }
+     
      }
 }
      
