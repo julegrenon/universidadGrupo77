@@ -34,12 +34,12 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         jTNombre = new javax.swing.JTextField();
         jTAño = new javax.swing.JTextField();
         jREstado = new javax.swing.JRadioButton();
-        jBuscar = new javax.swing.JButton();
         jBLimpiar = new javax.swing.JButton();
         jBAgregar = new javax.swing.JButton();
         jBEliminar = new javax.swing.JButton();
         jBModificar = new javax.swing.JButton();
-        jBsalir = new javax.swing.JButton();
+        jBuscar = new javax.swing.JButton();
+        jBSalir = new javax.swing.JButton();
 
         jLabel1.setFont(new java.awt.Font("Tahoma", 1, 18)); // NOI18N
         jLabel1.setHorizontalAlignment(javax.swing.SwingConstants.CENTER);
@@ -52,14 +52,6 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
         jLabel4.setText("Nombre");
 
         jLabel5.setText("Año");
-
-        jBuscar.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
-        jBuscar.setText("BUSCAR");
-        jBuscar.addActionListener(new java.awt.event.ActionListener() {
-            public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBuscarActionPerformed(evt);
-            }
-        });
 
         jBLimpiar.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
         jBLimpiar.setText("LIMPIAR");
@@ -93,11 +85,19 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
             }
         });
 
-        jBsalir.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
-        jBsalir.setText("SALIR");
-        jBsalir.addActionListener(new java.awt.event.ActionListener() {
+        jBuscar.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
+        jBuscar.setText("BUSCAR");
+        jBuscar.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                jBsalirActionPerformed(evt);
+                jBuscarActionPerformed(evt);
+            }
+        });
+
+        jBSalir.setFont(new java.awt.Font("Dialog", 3, 12)); // NOI18N
+        jBSalir.setText("SALIR");
+        jBSalir.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                jBSalirActionPerformed(evt);
             }
         });
 
@@ -112,9 +112,9 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                 .addComponent(jBEliminar)
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
                 .addComponent(jBModificar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 63, Short.MAX_VALUE)
-                .addComponent(jBsalir)
-                .addGap(33, 33, 33))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 57, Short.MAX_VALUE)
+                .addComponent(jBSalir)
+                .addGap(39, 39, 39))
             .addGroup(layout.createSequentialGroup()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
@@ -132,9 +132,9 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                             .addComponent(jTAño, javax.swing.GroupLayout.PREFERRED_SIZE, 72, javax.swing.GroupLayout.PREFERRED_SIZE)
                             .addGroup(layout.createSequentialGroup()
                                 .addComponent(jTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, 42, javax.swing.GroupLayout.PREFERRED_SIZE)
-                                .addGap(49, 49, 49)
+                                .addGap(36, 36, 36)
                                 .addComponent(jBuscar)
-                                .addGap(18, 18, 18)
+                                .addGap(36, 36, 36)
                                 .addComponent(jBLimpiar))
                             .addComponent(jTNombre, javax.swing.GroupLayout.PREFERRED_SIZE, 263, javax.swing.GroupLayout.PREFERRED_SIZE)))
                     .addGroup(layout.createSequentialGroup()
@@ -151,8 +151,8 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel2)
                     .addComponent(jTCodigo, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
-                    .addComponent(jBuscar)
-                    .addComponent(jBLimpiar))
+                    .addComponent(jBLimpiar)
+                    .addComponent(jBuscar))
                 .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
@@ -170,7 +170,7 @@ public class FormularioMateria extends javax.swing.JInternalFrame {
                     .addComponent(jBAgregar)
                     .addComponent(jBEliminar)
                     .addComponent(jBModificar)
-                    .addComponent(jBsalir))
+                    .addComponent(jBSalir))
                 .addGap(37, 37, 37))
         );
 
@@ -304,12 +304,32 @@ try{
       
     }//GEN-LAST:event_jBLimpiarActionPerformed
 
+    private void jBuscarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_jBuscarActionPerformed
+                                      
+  
+try{
+        int idMat = Integer.parseInt(jTCodigo.getText());
+         Materia mate = matData.buscarMateria(idMat);
+        
+         jTNombre.setText(mate.getNombre());
+         jTAño.setText(mate.getAnio()+"");
+         jREstado.setSelected(mate.isEstado());
+         if(jTCodigo!=null){
+             System.out.println( "Materia encontrada");
+            }
+        } catch (NumberFormatException ex) {
+            JOptionPane.showMessageDialog(null,"Usted debe ingresar un codigo ID para buscar");
+        }
+                                        
+
+    }//GEN-LAST:event_jBuscarActionPerformed
+
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton jBAgregar;
     private javax.swing.JButton jBEliminar;
     private javax.swing.JButton jBLimpiar;
     private javax.swing.JButton jBModificar;
-    private javax.swing.JButton jBsalir;
+    private javax.swing.JButton jBSalir;
     private javax.swing.JButton jBuscar;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
